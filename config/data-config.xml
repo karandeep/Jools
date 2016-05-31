@@ -1,0 +1,12 @@
+<dataConfig>
+  <dataSource type="JdbcDataSource" 
+              driver="com.mysql.jdbc.Driver"
+              url="jdbc:mysql://db-1.c2tyhpuxaerw.us-west-2.rds.amazonaws.com/jools" 
+              user="jools" 
+              password="@ceVentur@P#one!x"/>
+  <document>
+    <entity name="product" 
+            query="select id,encId,name from Product">
+    </entity>
+  </document>
+</dataConfig>

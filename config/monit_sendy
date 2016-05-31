@@ -1,0 +1,15 @@
+#/etc/monit/monitrc
+
+  set httpd port 2812 and 
+    use address www.jools.co.in
+    allow 0.0.0.0/0.0.0.0
+    allow admin:monit      # require user 'admin' with password 'monit'
+
+  check process apache2 with pidfile /run/apache2.pid 
+    start program = "/etc/init.d/apache2 start" with timeout 60 seconds 
+    stop program  = "/etc/init.d/apache2 stop"
+
+  check process mysqld with pidfile /run/mysqld/mysqld.pid
+    start program = "/usr/sbin/service mysql start" with timeout 60 seconds 
+    stop program  = "/usr/sbin/service mysql stop"
+

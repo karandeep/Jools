@@ -1,0 +1,47 @@
+{
+	"became_member": {
+		"became_member": {
+			"required": 1
+		}
+	},
+	"favorite": {
+		"favorited_two_inspirations": {
+			"required": 2
+		}
+	},
+	"follow": {
+		"follow_one": {
+			"required": 1
+		}
+	},
+	"liked_fb_page": {
+		"liked_fb_page": {
+			"required": 1
+		}
+	},
+	"pin": {
+		"pinned_one_inspiration": {
+			"required": 1
+		}
+	},
+	"shared_site_on_fb": {
+		"shared_site_on_fb": {
+			"required": 1
+		}
+	},
+	"took_tour": {
+		"took_tour": {
+			"required": 1
+		}
+	},
+	"tweeted_site": {
+		"tweeted_site": {
+			"required": 1
+		}
+	},
+	"upload": {
+		"upload_two_designs": {
+			"required": 2
+		}
+	}
+}

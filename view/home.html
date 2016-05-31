@@ -1,0 +1,425 @@
+<link rel="stylesheet" href="{{.Config.STATIC_URL}}/js/libs/nivoslider/nivo-slider.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="{{.Config.STATIC_URL}}/js/libs/nivoslider/themes/default/default.css" type="text/css" media="screen" />
+<div class="slider-outer-wrapper">
+    <div class="slider-wrapper theme-default">
+        <div id="slider" class="nivoSlider">
+        </div>
+    </div>
+</div>
+<div>
+    <div class="logo_area">
+        <img src="{{.Config.STATIC_URL}}/images/logo_v2.png" alt="Jools" height="70">
+    </div>
+    <div class="intro_text">
+        <span class="header_menu_item exp_magic_link">
+            Experience Magic
+        </span>
+        <span class="header_menu_item lets_play hide">
+            Win a diamond pendant
+        </span>
+        <span class="header_menu_item play_hotornot">
+            Play Hot or Not
+        </span>
+    </div>
+    <div class="home_option_win">
+        <div class="coming_soon">
+            Coming soon!
+        </div>
+        <div class="goudy_heading" style="clear: both;">
+            The next generation of jewellery
+        </div>
+        <div style="background: rgba(255,255,255,0.6); height: 200px; color: #333;">
+            <div class="experiment jools_exp_premarketing_v1_0">
+                <img src="{{.Config.STATIC_URL}}/images/discount_50.png" alt="" 
+                     height="180" class="left" 
+                     style="margin-left: 30px;margin-top: 10px; margin-right: 20px;">
+                <div class="premarketing_text" style="padding-top: 20px;width: 900px;margin-top: 0;padding-bottom: 15px;">
+                    Sign up for a sneak preview & awesome gifts. What are you waiting for?
+                </div>
+                <div id="request_access_email" style="margin-left: 100px;">
+                    <form id="request_access_form" action="{{.Config.BASE_URL}}/user/create" method="post">
+                        <div id="request_access_requirements">
+                            <input type="email" name="login_email" id="login_email" 
+                                   style='width: 290px; height: 23px;'
+                                   placeholder="Enter your email address">
+                            <input type="hidden" name="ref" value="{{.Data.referrer}}">
+
+                        </div>
+                        <input id="request_invite_button" type="submit" 
+                               value="Sign Up" class="light_pink_button"
+                               style="width: 160px;">
+                    </form>
+                </div>
+                <div style="float: left;width: 225px;text-align: right;margin-right: 10px;margin-top:20px;">Or</div>
+                <div class="fb_login" style="margin-top:15px;" onclick="tryFBLogin('hook');">
+                    <img class="fb_login_icon" src="{{.Config.STATIC_URL}}/images/icons/fb_icon.png" alt="" height="30" width="30">
+                    <div class="fb_login_text">
+                        Login with Facebook
+                    </div>
+                </div>
+            </div>
+            <div class="experiment jools_exp_premarketing_v1_1 jools_exp_premarketing_v1_2">
+                <img src="{{.Config.STATIC_URL}}/images/pendant_v2.png" alt="" 
+                     height="180" class="left" 
+                     style="margin-left: 30px;margin-top: 10px; margin-right: 0px;">
+                <div class="left premarketing_text">
+                    How about some fun while we wait?
+                    <div>
+                        Play to win this beautiful diamond pendant for free!
+                    </div>
+                </div>
+                <div style='padding-top: 80px;'>
+                    <button class="lets_play light_pink_button hide" style='width: 200px;'>Let's Play!</button>
+                    <button id="main_login" class="light_pink_button login hide" style='width: 200px;'>Login</button>
+                </div>
+            </div>
+        </div>
+        <div style='text-transform: uppercase; margin-top: 10px;'>
+            <a href="#" id="experience_magic_link" class="exp_magic_link"
+               style='text-decoration: none; color: white; font-size: 18px;letter-spacing: 3px;'>
+                Experience magic
+                <img src='{{.Config.STATIC_URL}}/images/icons/pink_arrow_down.png' alt=""
+                     height="30" style="position: relative; top: 7px;">
+            </a>
+        </div>
+    </div>
+    <div class="scrolling_wrapper">
+        <div class="experiment jools_exp_premarketing_v1_1 jools_exp_premarketing_v1_2">
+            <div id="guessing_contest" class="contest contest_price_guess_0">
+                <div id="win_prize" class='goudy_heading' style='text-shadow: none; color:black; font-size:62px;'>
+                    Win this diamond pendant!
+                </div>
+                <div style="width: 900px; margin: auto; text-align: left; margin-bottom: 50px;">
+                    <div class='left' style='margin-top:30px; height: 400px;'>
+                        <img src='{{.Config.STATIC_URL}}/images/pendant_v2.png' alt=''
+                             height='300'>
+                    </div>
+                    <div style='position:relative; z-index: 1;'>
+                        <div style="font-size: 30px; letter-spacing: 3px; margin-bottom: 20px; padding-top: 40px;">
+                            Guess the price to make it yours.
+                        </div>
+                        <div style="font-size: 20px; letter-spacing: 2px;">
+                            Our introductory infinity pendant
+                        </div>
+                        <div style="font-size: 16px; letter-spacing: 2px;">
+                            with diamonds studded in 14 carat yellow gold.
+                        </div>
+                        <div style='margin-top: 74px; margin-left: 380px;'>
+                            <input id="guessed_pendant_price" type="text" 
+                                   style="width:90px; height: 18px; font-size: 14px; margin-right: 40px; margin-bottom: 60px;"
+                                   placeholder='Price?'>
+                            <button id="submit_pendant_price" 
+                                    class="light_blue_button" style='width: 130px; position:relative; top: -31px;'>
+                                Submit
+                            </button>
+                        </div>
+                        <div style="font-size: 16px; letter-spacing: 2px; margin-bottom: 10px;">
+                            Results will be announced on 31st March, 2014.
+                        </div>
+                    </div>
+                    <div style='position: relative; top: -174px; left: -19px;z-index: 0;'>
+                        <img src='{{.Config.STATIC_URL}}/images/price_tag.png' alt=''>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="keep_scrolling">
+            <a href="#first" style="text-decoration: none; color: #333;">
+                <div class="goudy_heading" style="text-shadow: none;">
+                    <div style="font-size: 62px; margin-bottom:20px;">
+                        Are you ready to experience magic?
+                    </div>
+                    <div>
+                        Keep Scrolling
+                    </div>
+                    <div>
+                        <img src='{{.Config.STATIC_URL}}/images/icons/blue_arrow_down_v1.png' alt="">
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div id="customize_message">
+            <div style="font-size:30px; text-transform: uppercase;">
+                Your jewellery, just the way you like it.
+            </div>
+            <div style="font-size: 16px; margin-top: 15px;">
+                Soon, customizing your jewellery will be as easy as changing your mind.
+            </div>
+        </div>
+        <div id="share_with_magic">
+            <img src="{{.Config.STATIC_URL}}/images/icons/share_facebook_v1.png" class="fb_share_button">
+            <!--a class="style_as_button fb_share_button" href="#">Share on Facebook</a-->
+        </div>
+        <div id="go_down_indicator">
+            <div style="text-align: center; color: #333;">
+                SCROLL
+            </div>
+            <img src='{{.Config.STATIC_URL}}/images/icons/blue_arrow_down_v1.png' alt=''>
+        </div>
+        <div class="scroll_region" id="first">
+        </div>
+        <div class="scroll_region" id="second">
+        </div>
+        <div class="scroll_region" id="third">
+        </div>
+        <div class="scroll_region" id="fourth">
+        </div>
+        <div class="scroll_region" id="fifth">
+        </div>
+        <div class="scroll_region" id="sixth">
+        </div>
+        <div class="scroll_region" id="seventh">
+        </div>
+        <div class="scroll_region" id="eighth">
+        </div>
+        <div class="scroll_region" id="ninth">
+        </div>  
+        <div class="scroll_region" id="tenth">
+        </div>
+        <div id="eye_for_beauty">
+            <div class="goudy_shadowless">
+                Do you have an eye for beautiful things?
+            </div>
+            <div class="goudy_text" style="font-size: 35px;">
+                Play a round of
+                <span class="goudy_shadowless">Hot or Not</span>
+                & test your style quotient
+            </div>
+        </div>
+        <div style="background: rgba(139,210,206,0.3);">
+            <div id="hot_or_not_header">
+                <div class="goudy_shadowless" style="margin-bottom: 0;">
+                    Which one do you like?
+                </div>
+            </div>
+            <div id="hot_progress_bar_bg">
+                <div id="hot_progress_bar_text"></div>
+                <div id="hot_progress_bar">
+                </div>
+            </div>
+            <div id="hot_or_not">
+                <div id="hot_left" class="hot_img_wrapper">
+                    <div id='hot_img_left'>
+                    </div>
+                    <div class="hot_hover_text goudy_shadowless">
+                        <div style="margin-top: 150px;">
+                            HOT!
+                        </div>
+                        <div class="goudy_text" style="font-size: 25px;">
+                            Click to vote for this jool
+                        </div>
+                    </div>
+                </div>
+                <div id="hot_right" class="hot_img_wrapper">
+                    <div id='hot_img_right'>
+                    </div>
+                    <div class="hot_hover_text goudy_shadowless">
+                        <div style="margin-top: 150px;">
+                            HOT!
+                        </div>
+                        <div class="goudy_text" style="font-size: 25px;">
+                            Click to vote for this jool
+                        </div>
+                    </div>
+                </div>
+                <div id="rating_game_share">
+                    <div class="goudy_heading" style='margin-top: 80px;'>
+                        Congrats
+                    </div>
+                    <div class="goudy_text" style="font-size: 35px;text-shadow: 2px 2px 2px #000;margin-bottom: 60px;">
+                        You have just won a mystery gift!
+                        <div>
+                            Share this page on Facebook to find out what's inside.
+                        </div>
+                    </div>
+                    <img src="{{.Config.STATIC_URL}}/images/icons/share_facebook_v1.png"
+                         class="fb_mystery_gift" data-picture="cash_credit.jpg"
+                         data-title="Ka-ching! I just won a gift card, and you can too!"
+                         data-description="I played Hot or Not on Jools and just won a gift card worth Rs. 500! 
+                            Come and join the fun - there are lots of gifts and goodies to be won!">
+                </div>
+                <div class="rating_prize">
+                    <div class="goudy_heading" style='margin-top: 20px;'>
+                        It's a gift card!
+                    </div>
+                    <div style="color: #333; border: 1px solid #333; width: 90%; height: 100px; margin: auto;">
+                        <div class='left' style="font-size: 90px; margin: 0 20px;">
+                            <span class="WebRupee">Rs.</span>500
+                        </div>
+                        <div style="font-size: 25px; margin-top: 20px;">
+                            This amount will be credited to your account.
+                            <div>
+                                Use it to buy jewellery when we launch our store!
+                            </div>
+                        </div>
+                    </div>
+                    <div class="goudy_text" style="font-size: 30px; margin-bottom: 10px; margin-top:30px;">
+                        Please sign up so that we can credit your account with <span class="WebRupee">Rs.</span>500.
+                    </div>
+                    <button class='light_blue_button sign_up'>Sign Up</button>
+                </div>
+            </div>
+            <div id="hot_versus" class="goudy_shadowless">
+                Vs
+            </div>
+            <div id="next_hot_set">
+                <div class='tiny_bottom_margin'>Don't like either?</div>
+                <button id="get_next_pair" class='light_blue_button'>Skip</button>
+            </div>
+            <div id="hot_or_not_footer" class="goudy_shadowless">
+                Top rated Jools. 
+                <a href="mailto:team@jools.in" style="color: white;"
+                   title="Send us your designs if you would like them to get featured here">
+                    Want to get featured?
+                </a> 
+                <div id='top_rated_images'>
+                </div>
+                <div style="font-size: 35px; padding: 10px 0;">
+                    Sign up to win exciting discounts when we launch!
+                </div>
+            </div>
+        </div>
+        <div id="post_change_mind">
+            <div class="goudy_heading" style="text-shadow: none; color: #333; letter-spacing: 3px;">
+                Having fun yet? There's a lot more in store.
+                <div>
+                    We'll be launching soon, do stay in touch.
+                </div>
+            </div>
+            <div style="width: 770px; margin: auto; height: 70px;">
+                <div class='left'>
+                    <form id="request_access_form_bottom" action="{{.Config.BASE_URL}}/user/create" method="post">
+                        <input type="email" name="login_email" id="login_email_bottom" 
+                               style='width: 290px; height: 23px;'
+                               placeholder="Enter your email address">
+                        <input type="hidden" name="ref" value="{{.Data.referrer}}">
+                        <input id="request_invite_button_bottom" type="submit" 
+                               value="Sign up" class="light_pink_button">
+                    </form>
+                </div>
+                <div style="float: left;margin: 10px 20px;">Or</div>
+                <div class="fb_login" onclick="tryFBLogin('post_magic');">
+                    <img class="fb_login_icon" src="{{.Config.STATIC_URL}}/images/icons/fb_icon.png" alt="" height="30" width="30">
+                    <div class="fb_login_text">
+                        Login with Facebook
+                    </div>
+                </div>
+            </div>
+            <div style='text-transform: uppercase; font-size: 18px;'>
+                Up to 50% off on precious jewellery for our first guests.
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+window.onload = function() {
+    var firstOffset = $('#keep_scrolling').offset();
+    var tenthOffset = $('#tenth').offset();
+    
+    if($('#guessing_contest').is(":visible")) {
+        $('.lets_play').show();
+    } else {
+        $('#main_login').show();
+    }
+    $('#submit_pendant_price').click(function() {
+        var price = $("#guessed_pendant_price").val();
+        if (price == "") {
+            return;
+        }
+        trackObj.count("action", "prem", "quote", "submit", "", expObj.getBucket("premarketing_v1"));
+        contestObj.submitPrice();
+        utilObj.createPopup({{.Config.BASE_URL}} + '/user/askEmail',
+            {}, 500, 350, false);
+    });
+    $('#request_invite_button').click(function(e) {
+        e.preventDefault();
+        var email = $('#login_email').val();
+        if (email == '') {
+            return;
+        }
+        trackObj.count("action", "prem", "signup_intent", "hook", "submit_email", expObj.getBucket("premarketing_v1"), 1, email);
+        trackObj.count("action", "prem", "sign_up", "hook", "submit_email", expObj.getBucket("premarketing_v1"), 1, email);
+        setTimeout(function() {
+            $('#request_access_form').submit();
+        }, 500);
+    });
+    $('#request_invite_button_bottom').click(function(e) {
+        e.preventDefault();
+        var email = $('#login_email_bottom').val();
+        if (email == '') {
+            return;
+        }
+        trackObj.count("action", "prem", "signup_intent", "post_magic", "submit_email", expObj.getBucket("premarketing_v1"), 1, email);
+        trackObj.count("action", "prem", "sign_up", "post_magic", "submit_email", expObj.getBucket("premarketing_v1"), 1, email);
+        setTimeout(function() {
+            $('#request_access_form_bottom').submit();
+        }, 500);
+    });
+    $(window).scroll(function() {
+        var fromTop = $(window).scrollTop();
+        if(fromTop > firstOffset.top + 200 && fromTop < tenthOffset.top - 200) {
+            $('#customize_message').show();
+            $('#go_down_indicator').show();
+            $('#share_with_magic').show();
+        } else {
+            $('#customize_message').hide();
+            $('#go_down_indicator').hide();
+            $('#share_with_magic').hide();
+        }
+    });
+    $('.lets_play').click(function() {
+        var offset = 0;
+        offset = $('#guessing_contest').offset();
+        $(window).scrollTop(offset.top);
+        trackObj.count("action", "prem", "play", "", "", expObj.getBucket("premarketing_v1"));
+    });
+    $('.exp_magic_link').click(function(e) {
+        e.preventDefault();
+        $(window).scrollTop( $('#keep_scrolling').offset().top );
+        trackObj.count("action", "prem", "experience_magic", "", "", expObj.getBucket("premarketing_v1"));
+    });
+    $('.play_hotornot').click(function(e) {
+        e.preventDefault();
+        $(window).scrollTop( $('#eye_for_beauty').offset().top );
+        trackObj.count("action", "prem", "play_hot", "", "", expObj.getBucket("premarketing_v1"));
+    });
+    $('#hot_left').mouseover(function () {
+        $("#hot_left > .hot_hover_text").show();
+    }).mouseout(function () {
+        $('#hot_left > .hot_hover_text').hide();
+    });
+    $('#hot_right').mouseover(function () {
+        $("#hot_right > .hot_hover_text").show();
+    }).mouseout(function () {
+        $('#hot_right > .hot_hover_text').hide();
+    });
+    
+    $('#go_down_indicator').click(function() {
+        var currentTop = $(window).scrollTop();
+        $(window).scrollTop(currentTop + 400);
+    });
+    
+    $('#slider').html(
+        '<img src="' + {{.Config.STATIC_URL}} + '/images/premarketing_bg_0.jpg" alt="" >' +
+        '<img src="' + {{.Config.STATIC_URL}} + '/images/premarketing_bg_1.jpg" alt="" >' +
+        '<img src="' + {{.Config.STATIC_URL}} + '/images/premarketing_bg_2.jpg" alt="" >'
+    );	
+    $('#slider').nivoSlider({
+        effect: 'fade',
+        slices: 1,
+        boxCols: 8,
+        boxRows: 4,
+        animSpeed: 500,
+        pauseTime: 5000,
+        startSlide: 0,
+        directionNav: true,
+        controlNav: true,
+        controlNavThumbs: false,
+        pauseOnHover: true,
+        manualAdvance: false,
+        prevText: 'Prev',
+        nextText: 'Next',
+        randomStart: false
+    });
+};
+</script>

@@ -1,0 +1,16 @@
+<div style='text-align: center;'>
+    <div style='font-size: 30px; margin-bottom: 20px; margin-top: 10px; letter-spacing: 2px;'>
+        The pendant is almost yours!
+    </div>
+</div>
+<script type='text/javascript'>
+window.onload = function() {
+	var langsJson = {{.Data.languages}};
+	var langs = JSON.parse(langsJson);
+	console.log(langs);
+	var papers = JSON.parse({{.Data.papers}});
+	console.log(papers);
+	var news = JSON.parse({{.Data.news}});
+	console.log(news);
+};
+</script>

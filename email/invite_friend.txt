@@ -1,0 +1,13 @@
+{{.SenderName}} | A Diamond pendant is waiting for you!
+
+Hello!
+Your friend {{.SenderName}} discovered Jools.in and wants to share it with you! You're invited to join on a journey of delightful discovery of great jewellery designs.
+
+To join now: click here {{.ReferralLink}}
+
+First signups get a chance to win a diamond pendant and earn INR 5000 in cash credits. What are you waiting for? Play and Win!
+
+Here's the pendant that you can win.
+
+Cheers,
+Team Jools

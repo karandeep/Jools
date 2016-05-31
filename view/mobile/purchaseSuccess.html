@@ -1,0 +1,89 @@
+<div style="padding:15px; margin-top: 15px; margin-bottom: 15px;">
+    <div class="goudy_text" style="font-size: 28px;">
+        Congratulations! Your jools will be on their way soon!
+    </div>
+</div>
+<div style="background: #FFF0F1; margin-bottom: 25px;">
+    <div style="border-bottom: 3px solid #FFC4C7; padding: 10px 20px; height: 45px;">
+        <div class="upper left" style="color: black; width: 300px;">
+            Order id: <span class="order_id"></span>
+        </div>
+        <div class="right like_link" style="font-size: 16px;">
+            View invoice
+        </div>
+    </div>
+    <div style="padding-top: 15px; padding-bottom: 15px; overflow: hidden;">
+        <div class="left" style="width: 300px; margin-right: 100px; margin-left: 20px;">
+            <div style="color: black;">Delivery Address:</div>
+            <div id="delivery_address" style="margin-top: 10px; font-size: 14px;">
+            </div>
+        </div>
+        <div class="left" style="width: 325px; margin-right: 50px;">
+            <div style="margin-bottom: 10px;">
+                <span style="color: black; margin-right: 5px;">Delivery Date:</span>
+                <span class="delivery_date"></span>
+            </div>
+            <div style="margin-bottom: 10px;">
+                <span style="color: black; margin-right: 5px;">Payment mode:</span>
+                <span>Cash on delivery</span>
+            </div>
+            <div style="margin-bottom: 10px;">
+                <span style="color: black; margin-right: 5px;">Amount due:</span>
+                <span class="amount_due"></span>
+            </div>
+        </div>
+        <div style="font-size: 12px;">
+            <div>Can we help you?</div>
+            <div style="margin-top: 10px; margin-bottom: 14px;">
+                <img class="left" src="{{.Config.STATIC_URL}}/images/icons/mobile.png" height="20">
+                {{.Config.MOBILE_CONTACT}}
+            </div>
+            <div>
+                <a href="mailto:{{.Config.EMAIL_CONTACT}}?subject=Comments/Questions&body=Hello Folks at Jools,">
+                    <img class="left" src="{{.Config.STATIC_URL}}/images/icons/mail.png" 
+                         height="14" style="margin-right: 5px;">
+                </a>
+                <a href="mailto:{{.Config.EMAIL_CONTACT}}?subject=Comments/Questions&body=Hello Folks at Jools,"
+                   style="color: #333333;">
+                    {{.Config.EMAIL_CONTACT}}
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clear" style="margin: 10px 0;">
+    <button class="light_pink_button shop_link">Continue Shopping</button>
+</div>
+<div class="bag_header upper" style="padding-left: 15px; margin-bottom: 5px;">
+    Order Summary
+</div>
+<div class="bag_header clear">
+    <div class="bag_header_item" style="width: 450px;margin-right: 50px;margin-left: 15px;text-align: left;">
+        Product details
+    </div>
+    <div class="bag_header_item" style="width: 160px;">
+        Unit price
+    </div>
+    <div class="bag_header_item" style="width: 125px;">
+        Quantity
+    </div>
+    <div class="bag_header_item" style="width: 160px;">
+        Sub total
+    </div>
+</div>
+<div class="bag_items">
+</div>
+
+<script type="text/javascript">
+    var afterInit = function() {
+        var order = JSON.parse({{.Data.order}});
+        var address = JSON.parse({{.Data.address}});
+        $('.order_id').text(order.Id);
+        var deliveryAddress = address.Name + ' - ' + address.Mobile + '<div>'
+                    + address.Address + ', ' + address.City + ', ' + address.State + ' - ' + address.Pincode + '</div>';
+        $('#delivery_address').html(deliveryAddress);
+        $('.delivery_date').text( order.DeliveryDay + '-' + order.DeliveryMonth + '-' + order.DeliveryYear );
+        $('.amount_due').html( utilObj.formatMoney( order.Cost - order.Paid, true) );
+        cartObj.showItemList(false, JSON.parse(order.Products));
+    };
+</script>

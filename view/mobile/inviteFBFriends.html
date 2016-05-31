@@ -1,0 +1,54 @@
+<div style="text-align: center; color: black;">
+    <div style="text-align: center; color: black;">
+        <div class="chunkfive_text" style="font-size: 50px; margin-top: 15px;">
+            Send gifts to friends
+        </div>
+        <div class="goudy_text" style="font-size: 24px; margin-bottom: 15px;">
+            Gift your friends <span class="lucida_text"><span class="WebRupee">Rs.</span>500</span>
+            & get <span class="lucida_text"><span class="WebRupee">Rs.</span>500</span> for each friend that joins!
+        </div>
+    </div>
+    <div style="margin-bottom: 5px;">
+        <div style="text-align: left; margin-left: 10px;">
+            <input id="fb_contacts_master_checkbox" type="checkbox" checked="checked">
+            <span style="margin-left: 5px;">Select All</span>
+        </div>
+    </div>
+</div>
+<div id="fb_friends">  
+</div>
+<div style="width: 85%; float: left; margin-left: 1px;">
+    <div style="margin-bottom: 10px; border: 1px solid #aaa; height: 22px;">
+        <div id="fb_invite_progress_bar_bg" style="width: 0%;"></div>
+        <div style="z-index: 1; position: relative; top: -20px; text-align: center;">
+            Selected <span id="fb_contacts_selected_count">0</span>
+            of
+            <span id="fb_total_friend_count"></span>
+        </div>
+    </div>
+</div>
+<div style="position: relative; top: -3px;">
+    <img src="{{.Config.STATIC_URL}}/images/icons/heart_large_v1.png" alt="">
+</div>
+<div style="text-align: center; margin-top: 10px;">
+    <button id="invite_fb_friends" class="light_pink_button"
+            style="width: 220px;">Invite Friends</button>
+</div>
+<script type="text/javascript">
+window.onload = function() {
+    var populateTimer = null;
+    function checkAndPopulateFriends() {
+        if(typeof FB == "undefined" || FB.getAccessToken() == null) {
+            populateTimer = setTimeout( function() {
+                checkAndPopulateFriends();
+            }, 500);
+            return;
+        }
+        facebookWrapperObj.populateFBFriends();
+    };
+    $('#invite_fb_friends').click(function() {
+        facebookWrapperObj.sendFBInvites();
+    });
+    checkAndPopulateFriends();
+};
+</script>

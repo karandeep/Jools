@@ -1,0 +1,11 @@
+  check process apache2 with pidfile /run/apache2.pid 
+    start program = "/usr/sbin/service apache2 start" with timeout 60 seconds 
+    stop program  = "/usr/sbin/service apache2 stop"
+
+  check process jools with pidfile /home/ubuntu/pids/jools.pid
+    start = "/home/ubuntu/jools/scripts/jools.sh start"
+    stop = "/home/ubuntu/jools/scripts/jools.sh stop"
+
+  check process staging with pidfile /home/ubuntu/pids/staging.pid
+    start = "/home/ubuntu/jools/scripts/staging.sh start"
+    stop = "/home/ubuntu/jools/scripts/staging.sh stop"

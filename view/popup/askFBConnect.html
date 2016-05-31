@@ -1,0 +1,31 @@
+<div style="text-align: center; color: black;">
+    <div style="font-size: 40px; letter-spacing: 4px;margin-top: 10px;">
+        Welcome to Jools
+    </div>
+    <div style="margin: 10px 20px; padding-bottom: 20px;">
+        <div style="font-size: 30px; padding: 25px 0;">
+            Connect with Facebook and get <span class="WebRupee">Rs.</span>500 credits
+        </div>
+        <img id="connect_to_fb" src="{{.Config.STATIC_URL}}/images/icons/connect_fb.png" style="cursor: pointer;">
+        <div id="no_thanks_connect" 
+             style="color: #1CA4DA; margin-top: 30px;cursor: pointer; font-size: 14px;">
+             No, Thanks
+        </div>
+    </div>
+</div>
+<script type='text/javascript'>
+$('#no_thanks_connect').click(function() {
+    utilObj.closePopup();
+    trackObj.count("action", "ask_fb_connect", "click", "no_thanks");
+    userObj.signupCompletionReqd();
+});
+$('#connect_to_fb').click(function() {
+    facebookWrapperObj.getFBPermissions(fbConnectDone);
+    trackObj.count("action", "ask_fb_connect", "click", "connect");
+})
+function fbConnectDone() {
+    utilObj.closePopup();
+    userObj.showInitialCongrats();
+}
+utilObj.styleInputsAndButtons();
+</script>

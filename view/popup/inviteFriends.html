@@ -1,0 +1,67 @@
+<div style="text-align: center; color: black;">
+    <div style="font-size: 40px; letter-spacing: 5px; margin: 15px;">
+        Select friends to invite
+    </div>
+    <div class="contacts_selector">
+        <div class="contacts_selected_info">
+            Showing <span id="total_contacts"></span> contacts
+            | 
+            <span id="contacts_selected_count">0</span>
+            selected        
+        </div>
+        <div class="contacts_heading">
+            <div class="contacts_master">
+                <input id="contacts_master_checkbox" type="checkbox">
+            </div>
+            <div class="contacts_selector_name">
+                Name
+            </div>
+            <div class="contacts_selector_email">
+                Email Address
+            </div>
+        </div>
+        <div class="contacts_list">
+        </div>
+        <div id="invite_status_message" style="margin-bottom: 10px;"></div>
+        <button id='send_invite_mail' class="light_pink_button">
+            Send Invitations
+        </button>
+    </div>
+</div>
+<script type='text/javascript'>
+    var network = {{.Data.network}}
+    userObj.populateContacts({{.Data.emailData}});
+    utilObj.styleButtons();
+    $('#contacts_master_checkbox').change(function() {
+        if ($(this).is(":checked")) {
+            var count = 0;
+            $("input:checkbox[name=contact]").each(function() {
+                $(this).prop('checked', true);
+                count++;
+            });
+            $('#contacts_selected_count').text(count);
+        } else {
+            $("input:checkbox[name=contact]").prop('checked', false);
+            $('#contacts_selected_count').text(0);
+        }
+    });
+    $("input:checkbox[name=contact]").change(function() {
+        var count = parseInt($('#contacts_selected_count').text());
+        if ($(this).is(":checked")) {
+            count++;
+        } else {
+            count--;
+        }
+        if (count < 0) {
+            count = 0;
+        }
+        $('#contacts_selected_count').text(count);
+    });
+    $('#send_invite_mail').click(function() {
+        var allSelectedEmails = '';
+        $("input:checkbox[name=contact]:checked").each(function() {
+            allSelectedEmails += $(this).val() + ',';
+        });
+        emailObj.sendEmail(network, allSelectedEmails);
+    });
+</script>

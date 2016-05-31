@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>{{.PageInfo.Title}}</title>
+        <meta name="description" content="{{.PageInfo.Description}}">
+        <meta name="keywords" content="{{.PageInfo.Keywords}}">
+        <meta name='author' content='Jools'>
+        <link rel="canonical" href="{{.PageInfo.Canonical}}">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="fb:app_id" content="{{.Config.FB_APP_ID}}">
+        <meta property="og:url" content="{{.PageInfo.OG_URL}}">
+        <meta property="og:title" content="{{.PageInfo.OG_TITLE}}">
+        <meta property="og:type" content="{{.PageInfo.OG_TYPE}}">
+        <meta property="og:description" content="{{.PageInfo.OG_DESC}}">
+        <meta property="og:site_name" content="Jools.in">
+        <meta property="og:image" content="{{.PageInfo.OG_IMAGE}}">
+        <meta property="fb:page_id" content="{{.Config.FB_PAGE_ID}}">
+        <link href='https://fonts.googleapis.com/css?family=Goudy+Bookletter+1911|Cantarell:400' rel='stylesheet' type='text/css'>
+        <link href="{{.Config.STATIC_URL}}/js/libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        {{.InternalCSS}}
+    </head>
+    <body>
+        <div id="fb-root"></div>
+        {{.HeaderHTML}}
+        <div id="page_content">
+            {{.ContentHTML}}
+        </div>
+        <div id="popup">
+        </div>
+        {{.FooterHTML}}
+        {{.FooterJS}}
+        {{.InternalJS}}
+    </body>
+</html>

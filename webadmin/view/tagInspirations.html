@@ -1,0 +1,31 @@
+<div style="margin-bottom: 10px;">
+    Create a new tag in a category: 
+    (use this if you are adding tags other than the existing ones)
+    <form id="new_tag_form" action="{{.Config.BASE_URL}}/webadmin/addTag" method="post">
+        <input type="text" placeholder="Enter Category" name="category">
+        <input type="text" placeholder="Enter Tag" name="tag">
+        <input id="submit_new_tag" type="submit" class="light_pink_button" value="Submit New Tag">
+    </form>
+</div>
+<div style="margin-bottom: 30px;">
+    <div>
+    List of current tags:
+    </div>
+    <div id="categoriesInfo"></div>
+</div>
+<div id="allInspirations">
+</div>
+<script type="text/javascript">
+window.onload = function() {
+    inspirationObj.showInspirationTaggingBoard();
+    $('.tagInspiration').click(function() {
+       inspirationObj.tagInspiration( $(this) ); 
+    });
+    
+    $('#submit_new_tag').click(function(e) {
+       e.preventDefault();
+       $('#new_tag_form').submit();
+    });
+    tagObj.showCategoryList("categoriesInfo");
+};
+</script>

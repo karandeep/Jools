@@ -1,0 +1,101 @@
+<div class="relative center">
+    <h3 class="product_name lucida_text">
+    </h3>
+    <p class="cantarell_text" style="color: #7A7A7A;">
+        <span class="product_desc"></span>
+    </p>
+    <div class="product_thumbnails">
+    </div>
+    <img class="product_image" src="" alt="">
+</div>
+<div style="width: 400px; max-width: 100%; margin: auto;">
+    <div class="choice_wrapper center_stone_wrapper relative">
+        <div class="choose_text">
+            <span class="center_stone_choice_text"></span>
+            <div class="choices_toggle center_stone_choices_toggle left_triangle">
+            </div>
+        </div>
+        <div class="choices center_stone_choices">
+        </div>
+        <div class="diamond_selector diamond_selector_0">
+        </div>
+    </div>
+    <div class="choice_wrapper accent_stone_one_wrapper relative">
+        <div class="choose_text">
+            <span class="accent_stone_one_choice_text"></span>
+            <div class="choices_toggle accent_stone_one_choices_toggle left_triangle">
+            </div>
+        </div>		
+        <div class="choices accent_stone_one_choices">
+        </div>
+        <div class="diamond_selector diamond_selector_1">
+        </div>
+    </div>
+    <div class="choice_wrapper primary_metal_wrapper relative">
+        <div class="choose_text">
+            <span class="primary_metal_choice_text"></span>
+            <div class="choices_toggle primary_metal_choices_toggle left_triangle">
+            </div>
+        </div>
+        <div class="choices primary_metal_choices">
+        </div>
+    </div>
+</div>
+<div style="width: 400px; max-width: 100%; margin: auto;">
+    <div class="customize_info">
+        Watch the price change
+    </div>
+    <div class="product_price_wrapper left">
+        <div class="product_price"></div>
+        <div class="orig_product_price_wrap">
+            <span class="WebRupee">Rs.</span>
+            <span class="orig_product_price"></span>
+        </div>
+    </div>
+    <div class="product_discount_wrapper right">
+        <div class="light_pink_circle">
+        </div>
+        <div class="discount_info relative center">
+            <span class="product_discount"></span>
+            %
+        </div>
+        <div class="cantarell_text off_text">
+            off
+        </div>
+    </div>
+    <div class="product_delivery_wrapper">
+        <div class="size_selector left">
+            <div class="cantarell_text">
+                Select size
+            </div>
+            <select class="size_selector_options" name="ring_size">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="3">4</option>
+            </select>
+        </div>
+        <div class="delivery_by cantarell_text right">
+            <div style="font-size: 12px;">Delivery</div>
+            <div class="center" style="background: #F4F4F4;color: #7A7A7A;">
+                <span class="delivery_month"></span>
+                <span class="delivery_day"></span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="relative center" style="width: 400px; margin: auto; max-width: 100%;">
+    <button class="light_pink_button upper" style="width:220px;">
+        Add to bag
+    </button>
+</div>
+<script type="text/javascript">
+var productObj = null;
+var afterInit = function() {
+    productObj = new Product(JSON.parse({{.Data.productInfo}}));
+    productObj.showInitialProduct();
+    $('.add_to_cart').click(function() {
+        cartObj.addToCart(productObj.getInfoForCart(), true);
+    });
+};
+</script>

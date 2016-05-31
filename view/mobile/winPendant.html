@@ -1,0 +1,108 @@
+<div style="margin: 30px 0; text-align: center;">
+    <h1 class="page_header">
+        Win a diamond pendant
+    </h1>
+    <h2 class="sub_header contest contest_price_guess_0">
+        Guess the price to make this pendant yours!
+    </h2>
+    <h2 class="sub_header contest contest_price_guess_1 contest_price_guess_2">
+        You're almost there! Complete the following tasks to qualify for the contest.
+    </h2>
+    <h2 class="sub_header contest contest_price_guess_3">
+        Congratulations! You have qualified! Stay tuned for the results.
+    </h2>
+</div>
+<div id="guessing_contest">
+    <div style='margin-top:10px; margin: auto; width: 220px;'>
+        <img src='{{.Config.STATIC_URL}}/images/pendant_v2.png' alt=''
+             width='220'>
+    </div>
+    <div style="text-align: center;">
+        <div class="contest contest_price_guess_0">
+            <div style="font-size: 20px; color: #333;">
+                Our introductory infinity pendant
+                with diamonds studded in 14 carat yellow gold.
+            </div>
+            <div style='margin-top: 20px; margin-bottom: 15px;'>
+                <input id="guessed_pendant_price" type="text" 
+                       style="width:220px; margin-bottom: 15px;"
+                       placeholder='Enter Price'>
+                <button id="submit_pendant_price" class="light_pink_button"
+                        style="width: 220px;">
+                    Submit price
+                </button>
+            </div>
+            <div style="font-size: 16px; letter-spacing: 2px; margin-bottom: 10px;">
+                Winners will be announced on 31st March, 2014.
+            </div>
+        </div>
+        <div class="contest contest_price_guess_1">
+            <div class='outside_circle'>
+                <div class='light_blue_circle'></div>
+                <div class='inside_circle'>
+                    <div class='inner_circle_heading'>
+                        1
+                    </div>
+                </div>
+                <div class='goudy_text' style="font-size: 24px; margin-top: 5px;">
+                    Connect with Facebook
+                    <img src="{{.Config.STATIC_URL}}/images/icons/connect_fb.png"
+             style="cursor: pointer; margin-bottom: 10px;" width='200' 
+             class="contest contest_not_connected connect_to_fb">
+                    <img src="{{.Config.STATIC_URL}}/images/icons/green_check.png"
+                         style="margin-bottom: 10px;" width='40' 
+                         class="contest contest_connected">
+                </div>
+            </div>
+            <div class='outside_circle'>
+                <div class='light_blue_circle'></div>
+                <div class='inside_circle'>
+                    <div class='inner_circle_heading'>
+                        2
+                    </div>
+                </div>
+                <div class='goudy_text' style="font-size: 24px; margin-top: 5px;">
+                    Like our Facebook page
+                    <div class="contest contest_not_liked relative" style="display:inline-block; top: 12px;">
+                        <div class="fb-like " 
+                          style="width: 50px; overflow: hidden;"
+                          data-href="{{.Config.FB_PAGE}}" data-layout="button" 
+                          data-action="like" data-show-faces="false" data-share="false"></div>
+                    </div>
+                    <img src="{{.Config.STATIC_URL}}/images/icons/green_check.png"
+                         style="margin-bottom: 10px;" width='40' 
+                         class="contest contest_liked">
+                </div>
+            </div>
+            <div class='outside_circle'>
+                <div class='light_blue_circle'></div>
+                <div class='inside_circle'>
+                    <div class='inner_circle_heading'>
+                        3
+                    </div>
+                </div>
+                <div class='goudy_text' style="font-size: 24px; margin-top: 5px; padding-bottom: 10px;">
+                    Refer 3 friends to Jools
+                    <img src="{{.Config.STATIC_URL}}/images/icons/facebook_invite.png" 
+                         class="fb_invite_friends contest contest_not_referred">
+                    <img src="{{.Config.STATIC_URL}}/images/icons/green_check.png"
+                         style="margin-bottom: 10px;" width='40' 
+                         class="contest contest_referred">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+function fbConnectDone() {
+    contestObj.updateContestDetails();
+}
+window.onload = function() {
+    $('.connect_to_fb').click(function() {
+        facebookWrapperObj.getFBPermissions(fbConnectDone);
+    });
+    $('#submit_pendant_price').click(function() {
+        contestObj.submitPrice();
+    });
+};
+</script>

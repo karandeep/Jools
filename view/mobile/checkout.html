@@ -1,0 +1,146 @@
+<div class="checkout_head_wrap" style="margin-top:20px;">
+    <div class="checkout_heading">1. Email id</div>
+    <div class="checkout_summary_data checkout_summary_email"></div>
+    <button class="checkout_change light_blue_button checkout_change_email">
+        Change email
+    </button>
+</div>
+<div class="checkout_req_info checkout_info_email">
+    Enter your email address:
+    <input id="checkout_email" type="text" value="" placeholder="Email Address" style="width: 205px;">
+    <div class="right not_logged_in">
+        <div class="left" style="margin-right: 50px; line-height: 40px;">
+            OR
+        </div>
+        <div class="fb_login left" onclick="tryFBLogin('checkout');"
+             style="margin-right: 20px;">
+            <img src="{{.Config.STATIC_URL}}/images/icons/fb_login.png" alt="Login with Facebook">
+        </div>
+        <div class="left">
+            <img class="login clickable" alt="Login with email" 
+                 src="{{.Config.STATIC_URL}}/images/icons/email_login.png">
+        </div>
+    </div>
+    <div class="clear move_next_wrap">
+        <button class="light_pink_button move_next move_next_email">Continue</button>
+    </div>
+</div>
+<div class="checkout_head_wrap" style="overflow: hidden;">
+    <div class="checkout_heading">2. Delivery address</div>
+    <div class="checkout_summary_data checkout_summary_address">     
+    </div>
+    <button class="checkout_change light_blue_button checkout_change_address">
+        Change address
+    </button>
+</div>
+<div class="checkout_req_info checkout_info_address">
+    <div class="right existing_addresses">
+    </div>
+    <div class="new_address_info">
+        <div class="address_field">
+            <div class="address_field_name">Name</div>
+            <input id="checkout_username" type="text" value="" placeholder="Name" style="width: 250px;">
+        </div>
+        <div class="address_field">
+            <div class="address_field_name">Address</div>
+            <input id="checkout_address" type="text" value="" placeholder="Address" style="width: 250px;">
+        </div>
+        <div class="address_field">
+            <div class="address_field_name">City</div>
+            <input id="checkout_city" type="text" value="" placeholder="City" style="width: 250px;">
+        </div>
+        <div class="address_field">
+            <div class="address_field_name">State</div>
+            <select class="address_options address_options_state" style="width: 250px; height: 35px;">
+                <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option> 
+                <option value="Andhra Pradesh">Andhra Pradesh</option> 
+                <option value="Arunachal Pradesh">Arunachal Pradesh</option> 
+                <option value="Assam">Assam</option> 
+                <option value="Bihar">Bihar</option> 
+                <option value="Chandigarh">Chandigarh</option> 
+                <option value="Chhattisgarh">Chhattisgarh</option> 
+                <option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option> 
+                <option value="Daman and Diu">Daman and Diu</option> 
+                <option value="Delhi">Delhi</option> 
+                <option value="Goa">Goa</option> 
+                <option value="Gujarat">Gujarat</option> 
+                <option value="Haryana">Haryana</option> 
+                <option value="Himachal Pradesh">Himachal Pradesh</option> 
+                <option value="Jammu and Kashmir">Jammu and Kashmir</option> 
+                <option value="Jharkhand">Jharkhand</option> 
+                <option value="Karnataka">Karnataka</option> 
+                <option value="Kerala">Kerala</option> 
+                <option value="Lakshadweep">Lakshadweep</option> 
+                <option value="Madhya Pradesh">Madhya Pradesh</option> 
+                <option value="Maharashtra">Maharashtra</option> 
+                <option value="Manipur">Manipur</option> 
+                <option value="Meghalaya">Meghalaya</option> 
+                <option value="Mizoram">Mizoram</option> 
+                <option value="Nagaland">Nagaland</option> 
+                <option value="Orissa">Orissa</option> 
+                <option value="Puducherry">Puducherry</option> 
+                <option value="Punjab">Punjab</option> 
+                <option value="Rajasthan">Rajasthan</option> 
+                <option value="Sikkim">Sikkim</option> 
+                <option value="Tamil Nadu">Tamil Nadu</option> 
+                <option value="Telangana">Telangana</option> 
+                <option value="Tripura">Tripura</option> 
+                <option value="Uttar Pradesh">Uttar Pradesh</option> 
+                <option value="Uttarakhand">Uttarakhand</option> 
+            </select>
+        </div>
+        <div class="address_field">
+            <div class="address_field_name">Pincode</div>
+            <input id="checkout_pincode" type="text" value="" placeholder="Pincode" style="width: 250px;">
+        </div>
+        <div class="address_field">
+            <div class="address_field_name">Mobile</div>
+            <input id="checkout_mobile" type="text" value="" placeholder="Mobile number" style="width: 250px;">
+        </div>
+        <div class="clear move_next_wrap">
+            <button class="light_pink_button move_next move_next_address">Continue</button>
+        </div>
+    </div>
+</div>
+<div class="checkout_head_wrap">
+    <div class="checkout_heading">3. Order summary</div>
+    <div class="checkout_summary_data"></div>
+    <button class="checkout_change light_blue_button checkout_change_order">
+        Change order
+    </button>
+</div>
+<div class="checkout_req_info checkout_info_order">
+    <div class="bag_header">
+        <div class="bag_header_item" style="width: 450px;margin-right: 50px;margin-left: 15px;text-align: left;">
+            Product details
+        </div>
+        <div class="bag_header_item" style="width: 160px;">
+            Unit price
+        </div>
+        <div class="bag_header_item" style="width: 125px;">
+            Quantity
+        </div>
+        <div class="bag_header_item" style="width: 160px;">
+            Sub total
+        </div>
+    </div>
+    <div class="bag_items">
+    </div>
+    <div class="clear move_next_wrap">
+        <button class="light_pink_button move_next move_next_order">Continue</button>
+    </div>
+</div>
+<div class="checkout_head_wrap">
+    <div class="checkout_heading">4. Payment method</div>
+</div>
+<div class="checkout_req_info checkout_info_payment">
+    <button class="light_pink_button place_order">Place Order</button>
+</div>
+
+<script type="text/javascript">
+    var checkoutObj = null;
+    var afterInit = function() {
+        checkoutObj = new Checkout({{.Data.addresses}});
+        checkoutObj.showInitialState();
+    };
+</script>

@@ -1,0 +1,1 @@
+<link href="<?= STATIC_URL ?>/js/libs/jqueryui/css/ui-lightness/jquery-ui-1.10.3.custom.min.css" rel="stylesheet">

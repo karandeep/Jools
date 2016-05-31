@@ -1,0 +1,56 @@
+<div style="margin-top: 30px; text-align: center;">
+    <h1 class="page_header">
+        Jewellery sales launching soon!
+    </h1>
+    <h2 class="sub_header">
+        We have something magical in store for you
+    </h2>
+</div>
+<div style="margin-top: 10px; background: rgba(139,210,206,0.3); height: 300px; margin: auto;">
+    <img src="{{.Config.STATIC_URL}}/images/clock.png" alt="" height="300" style="float: left;">
+    <div style="text-align: center;">
+        <div class="goudy_text" style="padding-top: 70px; font-size: 60px; color: black;">
+            <span id="days_till_open" class="lucida_text">{{.Data.daysTillOpen}}</span> days to go
+        </div>
+        <div class="goudy_text" style="font-size: 20px; margin-bottom: 30px;">
+            Have you claimed your cash credits yet?
+        </div>
+        <a href="#experience_magic_v1" class="style_as_button light_pink_button btn btn-primary">
+            Get a sneak peek
+        </a>
+        <a href="{{.Config.BASE_URL}}/user/earnCash?utm_source=shop" class="style_as_button light_pink_button btn btn-primary">
+            Claim cash credits
+        </a>
+    </div>
+</div>
+<div id="experience_magic_v1" style="text-align: center; padding-top: 20px;">
+    <div style="margin-top: 30px; text-align: center;">
+        <h1 class="page_header">
+            Experience Magic
+        </h1>
+        <h2 class="sub_header">
+            Your jewellery, just the way you like it
+        </h2>
+    </div>
+    <div id="magic_region">
+    </div>
+</div>
+<script type="text/javascript">
+var magicImages = 10;
+var magicTimeout = 2; //in seconds
+var curMagicImage = 0;
+var changeMagic = null;
+function changeMagicImage() {
+    var newMagicImage = (curMagicImage + 1) % magicImages;
+    if (newMagicImage == 0) {
+        newMagicImage = magicImages;
+    }
+    $('#magic_region').attr('style', 
+        'background-image: url("' + {{.Config.STATIC_URL}} + '/images/ring' 
+                + newMagicImage + '.jpg");');
+    curMagicImage = newMagicImage;
+};
+changeMagic = setInterval( changeMagicImage, magicTimeout * 1000 );
+window.onload = function() {
+};
+</script>

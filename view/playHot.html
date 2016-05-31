@@ -1,0 +1,190 @@
+<div style="margin-top: 30px; text-align: center;">
+    <div class="page_header">
+        Hot or Not?
+    </div>
+    <div class="sub_header">
+        Rate these images & unlock mystery gifts!
+    </div>
+</div>
+<div style="margin-top: 30px; text-align: center;">
+    <div id="hot_bar_wrapper">
+        <div style="width: 37%; margin-right: 2%;" class="left">
+            Rate 10 images for the next mystery box.
+        </div>
+        <div id="hot_progress_bar_bg">
+            <div id="hot_progress_bar_text"></div>
+            <div id="hot_progress_bar">
+            </div>
+        </div>
+    </div>
+    <div id="hot_or_not_header">
+        <div class="goudy_text" style="margin-bottom: 0; color: #808080; font-size: 36px; letter-spacing: 1px;">
+            Which one do you like better?
+        </div>
+    </div>
+    <div id="hot_or_not">
+        <div id="hot_left" class="hot_img_wrapper">
+            <div id='hot_img_left'>
+            </div>
+            <div class="hot_hover_text goudy_shadowless">
+                <div style="margin-top: 150px;">
+                    HOT!
+                </div>
+                <div class="goudy_text" style="font-size: 25px;">
+                    Click to vote for this jool
+                </div>
+            </div>
+        </div>
+        <div id="hot_right" class="hot_img_wrapper">
+            <div id='hot_img_right'>
+            </div>
+            <div class="hot_hover_text goudy_shadowless">
+                <div style="margin-top: 150px;">
+                    HOT!
+                </div>
+                <div class="goudy_text" style="font-size: 25px;">
+                    Click to vote for this jool
+                </div>
+            </div>
+        </div>
+        <div id="rating_game_share">
+            <div class="goudy_heading" style='margin-top: 80px;'>
+                Congrats
+            </div>
+            <div class="goudy_text" style="font-size: 35px;margin-bottom: 60px;">
+                You have just won a mystery gift!
+                <div>
+                    Share this page on Facebook to find out what's inside.
+                </div>
+            </div>
+            <img src="{{.Config.STATIC_URL}}/images/icons/share_facebook_v1.png"
+                 class="fb_mystery_gift" data-picture="mystery_gift.jpg"
+                 data-title="I just got a mystery box from Jools!"
+                 data-description="What could be inside it? Glittering Gold? Sparkling Silver? Dazzling Diamonds?
+                 There's only one way to find out - Play Hot or Not on Jools & get your own mystery box!">
+        </div>
+        <div class="rating_prize">
+            <div class="goudy_heading" style='margin-top: 20px;'>
+                It's a fortune cookie!
+            </div>
+            <div style="color: #333; border: 1px solid #333; width: 90%; height: 100px; margin: auto;">
+                <div style="font-size: 36px; margin-top: 26px;">
+                    "It may be those who do most, dream most"
+                </div>
+            </div>
+            <div class="goudy_text" style="font-size: 30px; margin-bottom: 10px; margin-top:30px;">
+                Keep playing to unwrap more fun things!
+            </div>
+            <button id="keep_playing" class='light_blue_button'>Play Hot or Not</button>
+        </div>
+        <div id="hot_versus" class="goudy_shadowless">
+            Vs
+        </div>
+        <div id="next_hot_set">
+            <div class='tiny_bottom_margin'>Don't like either?</div>
+            <button id="get_next_pair" class='light_blue_button'>Skip</button>
+        </div>
+    </div>
+    <div id="hot_or_not_footer" class="goudy_shadowless">
+        <div style="font-size: 30px; color: #808080; letter-spacing: 1px;">
+            The hottest jools, as rated by the community.
+        </div>
+        <div id='top_rated_images'>
+        </div>
+    </div>
+</div>
+<div style="margin-bottom: 30px; text-align: center;">
+    <div class="page_header">
+        Explore Jools
+    </div>
+    <div class="sub_header">
+        Lots of fun, gifts & giveaways in store for you!
+    </div>
+</div>
+<div id="cross_promo_region">
+    <div class="cross_promo win_pendant">
+        <img src="{{.Config.STATIC_URL}}/images/home_win_pendant.jpg" alt="Win this pendant"
+             width="318">
+        <div class="cross_promo_wrapper">
+            <div class="goudy_text cross_promo_head">
+                Win this pendant
+            </div>
+            <div class="lucida_text cross_promo_desc">
+                Play our fun guessing game 
+                <div>& win this diamond pendant!</div>
+            </div>
+            <button class="win_pendant_link light_blue_button" data-src="page_xpromo"
+                    data-medium="{{.Data.trackingName}}" style="width: 120px;">
+                Guess
+            </button>
+        </div>
+    </div>
+    <div class="cross_promo hot_trends">
+        <img src="{{.Config.STATIC_URL}}/images/home_hottest_trends.jpg" alt="Hottest trends"
+             width="318">
+        <div class="cross_promo_wrapper">
+            <div class="goudy_text cross_promo_head">
+                Discover stunning jewels
+            </div>
+            <div class="lucida_text cross_promo_desc">
+                Find & share 
+                <div>stunning jewellery</div>
+            </div>
+            <button class="hot_trends_link light_blue_button" data-src="page_xpromo"
+                    data-medium="{{.Data.trackingName}}" style="width: 120px;">
+                Discover
+            </button>
+        </div>
+    </div>
+    <div class="cross_promo play_hot">
+        <img src="{{.Config.STATIC_URL}}/images/home_hot_not.jpg" alt="Hot or not"
+             width="318">
+        <div class="hp_cross_promo_wrapper">
+            <div class="goudy_text cross_promo_head">
+                Test your style quotient
+            </div>
+            <div class="lucida_text cross_promo_desc">
+                Rate jewellery images 
+                <div>& unlock mystery gifts</div>
+            </div>
+            <button class="play_hot_link light_blue_button" data-src="page_xpromo"
+                    data-medium="{{.Data.trackingName}}" style="width: 120px;">
+                Play
+            </button>
+        </div>
+    </div>
+    <div class="cross_promo earn_cash">
+        <img src="{{.Config.STATIC_URL}}/images/home_gift_500.jpg" alt="Gift 500,Get 500"
+             width="318">
+        <div class="cross_promo_wrapper">
+            <div class="goudy_text cross_promo_head">
+                Gift <span class="lucida_text">500</span>, Get <span class="lucida_text">500</span>!
+            </div>
+            <div class="lucida_text cross_promo_desc">
+                Gift your friends <span class="WebRupee">Rs.</span>500 & 
+                <div>earn up to <span class="WebRupee">Rs.</span>5000 in cash credits</div>
+            </div>
+            <button class="earn_cash_link light_blue_button" data-src="page_xpromo"
+                    data-medium="{{.Data.trackingName}}" style="width: 120px;">
+                Gift
+            </button>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    window.onload = function() {
+        $('#hot_left').mouseover(function () {
+            $("#hot_left > .hot_hover_text").show();
+        }).mouseout(function () {
+            $('#hot_left > .hot_hover_text').hide();
+        });
+        $('#hot_right').mouseover(function () {
+            $("#hot_right > .hot_hover_text").show();
+        }).mouseout(function () {
+            $('#hot_right > .hot_hover_text').hide();
+        });
+        $('#keep_playing').click(function() {
+            $('.rating_prize').fadeOut();
+        });
+    };
+</script>

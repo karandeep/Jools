@@ -1,0 +1,2 @@
+<!-- Additional Solr config for tokenizing -->
+<filter class="solr.NGramFilterFactory" maxGramSize="20" minGramSize="4"/>

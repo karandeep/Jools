@@ -1,0 +1,294 @@
+<div id="myCarousel" class="carousel slide">
+    <div id="myCarouselImages" class="carousel-inner">
+    </div>
+</div>
+<a id="menu-toggle" href="#" class="btn btn-primary btn-lg toggle">
+    <i class="fa fa-bars"></i>
+</a>
+<div id="sidebar-wrapper">
+    <ul class="sidebar-nav">
+        <a id="menu-close" href="#" class="btn btn-default btn-lg pull-right toggle">
+            <i class="fa fa-times"></i>
+        </a>
+        <li class="sidebar-brand"><a href="#page_content">Jools</a></li>
+        <li><a href="#page_content">Home</a></li>
+        <li class="win_pendant_link"><a href="#win_pendant_section">Win Pendant</a></li>   
+        <li class="earn_cash_link"><a href="#earn_cash">Earn Cash</a></li>
+        <li><a href="#stay_tuned">Connect</a></li>
+        <li class="invite_friends_link"><a href="#earn_cash">Invite Friends</a></li> 
+        <li><a href="#footer">Contact</a></li>
+        <li class="logout_button"><a href="">Logout</a></li>
+    </ul>
+</div>
+<div class="main_body">
+    <div class='logo_area'>
+        <img src="{{.Config.STATIC_URL}}/images/logo_v2.png" alt="Jools" height="50">
+    </div>
+    <div style="color: white; min-height: 250px;">
+        <h1>
+            Jewellery sales launching soon
+        </h1>
+        <h3>
+            Enjoy games and gifts while we countdown to launch!
+        </h3>
+        <button class='btn btn-primary win_pendant_link'>
+            Play & Win
+        </button>
+        <button class='earn_cash_link btn btn-primary'>
+            Earn cash
+        </button>
+    </div>
+    <div id="win_pendant_section">
+        <div id='win_pendant' class="contest contest_price_guess_0">
+            <h2 style='padding-bottom: 20px;'>
+                Win this diamond pendant
+            </h2>
+            <img src="{{.Config.STATIC_URL}}/images/pendant_v2.png" height="185" alt="Pendant">
+            <h3>
+                Guess the price of the pendant to make it yours
+            </h3>
+            <p>
+                This is our limited edition infinity pendant with sparkling diamonds studded 
+                in 14-carat gold.
+            </p>
+            <div class="tiny_bottom_margin">
+                <input id="guessed_pendant_price" type="text" placeholder='Guess the price'>
+            </div>
+            <button id="submit_pendant_price" 
+                    class="btn btn-primary tiny_bottom_margin">
+                Submit
+            </button>
+        </div>
+        <div class="experiment jools_exp_premarketing_v1_1">
+            <div class="almost_there contest contest_price_guess_1">
+                <h2 style='padding-bottom: 20px;'>
+                    Win this diamond pendant
+                </h2>
+                <img src="{{.Config.STATIC_URL}}/images/pendant_v2.png" height="185" alt="Pendant">
+                <h3>
+                    You're almost there!
+                </h3>
+                <p>
+                    We've received your quote. Just like our fb page to qualify for the contest.
+                </p>
+                <p>
+                    Winners will be announced on 31st March, 2014.
+                </p>
+		<div class="fb-like" style="margin-right: 10px; width: 50px; overflow: hidden;"
+                    data-href="{{.Config.FB_PAGE}}" data-layout="button" 
+                    data-action="like" data-show-faces="false" data-share="false">
+		</div>
+            </div>
+        </div>
+        <div class="experiment jools_exp_premarketing_v1_2">
+            <div class="almost_there contest contest_price_guess_1">
+                <h2 style='padding-bottom: 20px;'>
+                    Win this diamond pendant
+                </h2>
+                <img src="{{.Config.STATIC_URL}}/images/pendant_v2.png" height="185" alt="Pendant">
+                <h3>
+                    You're almost there!
+                </h3>
+                <p>
+                    We've received your quote. Get 3 friends to submit their quotes.
+                </p>
+                <p>
+                    Winners will be announced on 31st March, 2014.
+                </p>
+                <button class="invite_friends_link btn btn-primary tiny_bottom_margin">
+                    Invite Friends
+                </button>
+            </div>
+        </div>
+        <div id="youre_there" class="contest contest_price_guess_2">
+            <h2 style='padding-bottom: 20px;'>
+                Win this diamond pendant
+            </h2>
+            <img src="{{.Config.STATIC_URL}}/images/pendant_v2.png" height="185" alt="Pendant">
+            <h3>
+                You've qualified!
+            </h3>
+            <p>
+                Winners will be announced on 31st March, 2014.
+            </p>
+            <button class="invite_friends_link btn btn-primary tiny_bottom_margin">
+                Invite Friends
+            </button>
+        </div>
+    </div>
+    <div class="callout_region">
+        <h1>
+            Invite friends and win cash credits
+        </h1>
+    </div>
+    <div id="earn_cash" style="background: rgb(241, 228, 243);">
+        <h1 style="font-size: 50px">
+            <span class="WebRupee">Rs.</span> 5000
+        </h1>
+        <h3>
+            Earn up to Rs. 5000 in cash credits by inviting friends to Jools.
+        </h3>
+        <p>
+            And what's more, your friends get credits too!
+        </p>
+        <div class="progress">
+            <div id="access_levels_progress" class="progress-bar" role="progressbar" 
+                 aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+            </div>
+        </div>
+        <div class="credit_progress_info">
+            <div class='left credit_earned'>
+                Credits earned
+            </div>
+            <div class='left credit_earned'>
+                <span class="WebRupee">Rs.</span> 500
+            </div>
+            <div class='left credit_earned'>
+                <span class="WebRupee">Rs.</span> 1000
+            </div>
+            <div class='left credit_earned'>
+                <span class="WebRupee">Rs.</span> 1500
+            </div>
+            <div class='left credit_earned'>
+                <span class="WebRupee">Rs.</span> 2500
+            </div>
+            <div class='left credit_earned'>
+                <span class="WebRupee">Rs.</span> 5000
+            </div>
+        </div>
+        <div class="credit_progress_info">
+            <div class="left credit_detailed_info">
+                Friends joining
+            </div>
+            <div class="left credit_detailed_info">
+                0
+                <img src="{{.Config.STATIC_URL}}/images/icons/friend.png" height="18">
+            </div>
+            <div class="left credit_detailed_info">
+                3
+                <img src="{{.Config.STATIC_URL}}/images/icons/friend.png" height="18">
+            </div>
+            <div class="left credit_detailed_info">
+                5
+                <img src="{{.Config.STATIC_URL}}/images/icons/friend.png" height="18">
+            </div>
+            <div class="left credit_detailed_info">
+                10
+                <img src="{{.Config.STATIC_URL}}/images/icons/friend.png" height="18">
+            </div>
+            <div class="left credit_detailed_info">
+                20
+                <img src="{{.Config.STATIC_URL}}/images/icons/friend.png" height="18">
+            </div>
+        </div>
+        <h3>
+            Invite friends
+        </h3>
+        <div style="width: 200px; margin: auto; height: 30px;">
+            <div class="left" style="margin-right: 5px; width: 50px;">
+                <div class="fb-send" 
+                    data-href="{{.Data.referralLink}}"></div>
+            </div>
+            <div class="left" style="width:60px; margin-right: 5px;">
+                <div class="fb-share-button" 
+                    data-href="{{.Data.referralLink}}" data-type="button"></div>
+            </div>
+            <div class="left">
+                <a href="https://twitter.com/share" class="twitter-share-button" data-url="{{.Data.referralLink}}" data-text="Sign up for jools using this link" data-via="joolsandyou" data-count="none">Tweet</a>
+            </div>
+        </div>
+        <h3>
+            Enter email addresses separated by commas
+        </h3>
+        <div class="tiny_bottom_margin">
+            <input id="email_list_for_referral" type="text"
+                placeholder='Enter email addresses separated by commas'>
+        </div>
+        <button id='send_email' class="btn btn-primary">Invite Friends</button>
+        <div id='email_status_message' class="small_text" style="padding-bottom: 20px;"></div>
+    </div>
+    <div id="stay_tuned" style="color: white; background: #7fbbda; padding: 10px 0;">
+        <h2>
+            Thanks for visiting.
+        </h2>
+        <h3>
+            Stay tuned for more exciting updates.
+        </h3>
+        <div style="width: 200px; margin: auto; height: 50px;">
+            <div class="fb-like left" 
+                 style="margin-right: 10px; width: 50px; overflow: hidden;"
+                 data-href="{{.Config.FB_PAGE}}" data-layout="button" 
+                 data-action="like" data-show-faces="false" data-share="false">
+            </div>
+            <div class="left">
+                <a href="{{.Config.TWTR_PAGE}}" class="twitter-follow-button" data-show-count="false" data-lang="en">
+                    Follow
+                </a>
+            </div>
+        </div>
+          
+    </div>
+</div>
+<script type="text/javascript">
+window.onload = function() {
+    $('#submit_pendant_price').click(function() {
+        contestObj.submitPrice();
+        trackObj.count("action", "hp", "quote","submit","", expObj.getBucket("premarketing_v1"));
+    });
+    $('.win_pendant_link').click(function(e) {
+        e.preventDefault();
+        var offset = $('#win_pendant_section').offset();
+        $(window).scrollTop(offset.top);
+        trackObj.count("action", "hp", "play", "", "", expObj.getBucket("premarketing_v1"));
+    });
+    $('.earn_cash_link').click(function(e) {
+        e.preventDefault();
+        var offset = $('#earn_cash').offset();
+        $(window).scrollTop(offset.top);
+        trackObj.count("action", "hp", "earn_cash", "", "", expObj.getBucket("premarketing_v1"));
+    });
+    $('.invite_friends_link').click(function(e) {
+        e.preventDefault();
+        var offset = $('#earn_cash').offset();
+        $(window).scrollTop(offset.top);
+        trackObj.count("action", "hp", "invite_friends", "", "", expObj.getBucket("premarketing_v1"));
+    });
+    $('#send_email').click(function() {
+        var emailList = $('#email_list_for_referral').val();
+        sendEmail('email', emailList);
+    });
+    var referralCount = userObj.getReferralCount();
+    $('#referral_count').text(referralCount);
+    var pWidth = inviteTierObj.getProgressBarWidth(referralCount);
+    $('#access_levels_progress').attr("style", "width: " + pWidth + "%;");
+};
+var tabForEmailSend = 'email';
+function setMessage(message) {
+   if (tabForEmailSend == 'email') {
+       $('#email_status_message').text(message);
+   }
+}
+function sendEmail(tab, list) {
+    var message = '';
+    if (list == '') {
+        message = 'Please enter valid email addresses';
+        setMessage(message);
+        return;
+    }
+    message = 'Sending Emails';
+    setMessage(message);
+    $.ajax({
+        type: "POST",
+        url: '{{.Config.BASE_URL}}/user/sendReferralEmail',
+        data: {emails: list},
+        success: emailSendSuccess,
+        dataType: 'json'
+    });
+    var emailList = list.split(",");
+    trackObj.count("action", "hp", "invite", "email", tab, expObj.getBucket("premarketing_v1"), emailList.length);
+}
+function emailSendSuccess(result)
+{
+    setMessage(result.Data.message);
+}
+</script>

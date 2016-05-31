@@ -1,0 +1,100 @@
+<div style="text-align: center; color: black;">
+    <div style="font-size: 40px; letter-spacing: 5px; margin: 15px;">
+        Earn <span class="WebRupee">Rs.</span>5000 in cash credits!
+    </div>
+    <div>
+        <div style="font-size: 25px; padding: 10px 0px 15px 0; letter-spacing: 3px;">
+            {{.Data.inviteCount}} invites sent.
+        </div>
+        <!--div style='width: 750px; margin: auto; padding: 10px; background: rgba(139,210,206,0.3);'>
+            <div class="referral_count_info">
+                <span class='referral_count'>0</span> friends have joined using your invite link
+            </div>
+            <div class="access_levels_progress_bg">
+                <div class="access_levels_progress">       
+                </div>
+            </div>
+            <div class="access_level_indicators">     
+                <div class="access_level_arrow">    
+                </div>
+                <div class="access_level_arrow">    
+                </div>
+                <div class="access_level_arrow">    
+                </div>
+                <div class="access_level_arrow">    
+                </div>
+                <div class="access_level_arrow">    
+                </div>
+            </div>
+            <div style='height: 30px;'>
+                <div class='left' style="margin-right: 50px;">
+                    Credits earned
+                </div>
+                <div class='left credit_earned'>
+                    <span class="WebRupee">Rs.</span> 500
+                </div>
+                <div class='left credit_earned'>
+                    <span class="WebRupee">Rs.</span> 1000
+                </div>
+                <div class='left credit_earned'>
+                    <span class="WebRupee">Rs.</span> 1500
+                </div>
+                <div class='left credit_earned'>
+                    <span class="WebRupee">Rs.</span> 2500
+                </div>
+                <div class='left credit_earned'>
+                    <span class="WebRupee">Rs.</span> 5000
+                </div>
+            </div>
+            <div style='height: 30px; margin-bottom: 20px;'>
+                <div class='left' style="margin-right: 50px;">
+                    Friends joining
+                </div>
+                <div class='left friends_joined'>
+                    <span style="position: relative; top: -3px;left:4px;">0</span> 
+                    <img src="{{.Config.STATIC_URL}}/images/icons/friend.png" height="18">
+                </div>
+                <div class='left friends_joined'>
+                    <span style="position: relative; top: -3px;left:4px;">3</span>
+                    <img src="{{.Config.STATIC_URL}}/images/icons/friend.png" height="18">
+                </div>
+                <div class='left friends_joined'>
+                    <span style="position: relative; top: -3px;left:4px;">5</span>
+                    <img src="{{.Config.STATIC_URL}}/images/icons/friend.png" height="18">
+                </div>
+                <div class='left friends_joined'>
+                    <span style="position: relative; top: -3px;left:4px;">10</span>
+                    <img src="{{.Config.STATIC_URL}}/images/icons/friend.png" height="18">
+                </div>
+                <div class='left friends_joined'>
+                    <span style="position: relative; top: -3px;left:4px;">20</span>
+                    <img src="{{.Config.STATIC_URL}}/images/icons/friend.png" height="18">
+                </div>
+            </div>
+        </div-->
+        <div style='margin-bottom: 20px;'>
+            You'll receive the credits when your friends sign up.
+        </div>
+        <button class="fb_invite_friends light_pink_button" style="margin-right: 50px;">
+            Invite More
+        </button>
+        <button class="close_popup light_pink_button">
+            Done
+        </button>
+    </div>
+</div>
+<script type='text/javascript'>
+    $('.close_popup').click(function() {
+        utilObj.closePopup();
+    });
+    utilObj.styleButtons();
+    var curFbid = userObj.getFbid();
+    $('.fb_invite_friends').unbind('click').click(function() {
+        facebookWrapperObj.inviteFriends("after_send");
+        utilObj.closePopup();
+    });
+    var referralCount = userObj.getReferralCount();
+    $('.referral_count').text(referralCount);
+    var pWidth = inviteTierObj.getProgressBarWidth(referralCount);
+    $('.access_levels_progress').attr("style", "width: " + pWidth + "%;");
+</script>

@@ -1,0 +1,233 @@
+<div class="relative">
+    <img src="{{.Config.STATIC_URL}}/images/home_bg.jpg" alt="" width="1000"
+         style="position: absolute; z-index: -1; top: -418px; left: 0;">
+    <div style="margin-top: 380px; padding-top: 20px; background: rgba(139,210,206,0.3); height: 250px; text-align: center;">
+        <div class="goudy_text" style="font-size: 60px; color: white; text-shadow: 0px 1px 1px #666;">
+            Jewellery sales launching in {{.Data.daysTillOpen}} days!
+        </div>
+        <div class="sub_header" style="text-shadow: 0px 1px 1px #666;">
+            We have something magical in store for you.
+        </div>
+        <div>
+            <a href="#experience_magic_v1" class="style_as_button light_pink_button"
+               style="margin-right: 20px; width: 250px;">
+                Get a sneak peek
+            </a>
+            <a href="{{.Config.BASE_URL}}/user/earnCash?utm_source=shop" 
+               class="style_as_button light_pink_button" style="width: 250px;">
+                Claim cash credits
+            </a>
+        </div>
+    </div>
+</div>
+<div>
+    <div class="hp_cross_promo" style="margin-left: 0;">
+        <img src="{{.Config.STATIC_URL}}/images/home_win_pendant.jpg" alt="Win this pendant"
+             width="318">
+        <div class="hp_cross_promo_wrapper">
+            <div class="goudy_text hp_cross_promo_head">
+                Win this pendant
+            </div>
+            <div class="lucida_text hp_cross_promo_desc">
+                Play our fun guessing game 
+                <div>& win this diamond pendant!</div>
+            </div>
+            <button class="win_pendant_link light_blue_button" data-src="shop_xpromo"
+                    style="width: 120px;">
+                Guess
+            </button>
+        </div>
+    </div>
+    <div class="hp_cross_promo" style="margin-left: 6px; margin-right: 6px;">
+        <img src="{{.Config.STATIC_URL}}/images/home_hottest_trends.jpg" alt="Hottest trends"
+             width="318">
+        <div class="hp_cross_promo_wrapper">
+            <div class="goudy_text hp_cross_promo_head">
+                Discover stunning jewels
+            </div>
+            <div class="lucida_text hp_cross_promo_desc">
+                Find & share 
+                <div>stunning jewellery</div>
+            </div>
+            <button class="hot_trends_link light_blue_button" data-src="shop_xpromo"
+                    style="width: 120px;">
+                Discover
+            </button>
+        </div>
+    </div>
+    <div class="hp_cross_promo" style="margin-right: 0;">
+        <img src="{{.Config.STATIC_URL}}/images/home_hot_not.jpg" alt="Hot or not"
+             width="318">
+        <div class="hp_cross_promo_wrapper">
+            <div class="goudy_text hp_cross_promo_head">
+                Test your style quotient
+            </div>
+            <div class="lucida_text hp_cross_promo_desc">
+                Rate jewellery images 
+                <div>& unlock mystery gifts</div>
+            </div>
+            <button class="play_hot_link light_blue_button" data-src="shop_xpromo"
+                    style="width: 120px;">
+                Play
+            </button>
+        </div>
+    </div>
+</div>
+<div id="experience_magic_v1" class="clear center" style="padding-top: 20px;">
+    <div style="margin-top: 30px; text-align: center;">
+        <div class="page_header">
+            Experience Magic
+        </div>
+        <div class="sub_header">
+            Your jewellery, just the way you like it
+        </div>
+    </div>
+    <div id="customize_message">
+        <div style="font-size: 16px; margin-top: 15px;">
+            Soon, customizing your jewellery will be as easy as changing your mind.
+        </div>
+    </div>
+    <div id="share_with_magic">
+        <img src="{{.Config.STATIC_URL}}/images/icons/share_facebook_v1.png" class="fb_share_button">
+    </div>
+    <div id="scroll_indicator">
+        <div style="text-align: center; color: #333;">
+            SCROLL
+        </div>
+        <img src='{{.Config.STATIC_URL}}/images/icons/blue_arrow_down_v1.png' alt=''>
+    </div>
+    <div style="margin-bottom: 120px">
+        <div class="scroll_region" id="first">
+        </div>
+        <div class="scroll_region" id="second">
+        </div>
+        <div class="scroll_region" id="third">
+        </div>
+        <div class="scroll_region" id="fourth">
+        </div>
+        <div class="scroll_region" id="fifth">
+        </div>
+        <div class="scroll_region" id="sixth">
+        </div>
+        <div class="scroll_region" id="seventh">
+        </div>
+        <div class="scroll_region" id="eighth">
+        </div>
+        <div class="scroll_region" id="ninth">
+        </div>  
+        <div class="scroll_region" id="tenth">
+        </div>
+    </div>
+</div>
+<div class="center not_logged_in" style="min-height: 300px;">
+    <div class="page_header">
+        Having fun yet?
+    </div>
+    <div class="sub_header">
+        Join the club for lots more fun, gifts and giveaways
+    </div>
+    <div style="margin: 30px 0;">
+        <img class="fb_login" onclick="tryFBLogin('shop_bottom');" 
+             src="{{.Config.STATIC_URL}}/images/icons/fb_login.png" 
+             alt="Login with Facebook" style="margin-right: 20px;">
+        <img class="login clickable" alt="Login with email" data-src="shop_bottom"
+             src="{{.Config.STATIC_URL}}/images/icons/email_login.png">
+    </div>
+</div>
+<div id="cross_promo_region">
+    <div class="cross_promo win_pendant">
+        <img src="{{.Config.STATIC_URL}}/images/home_win_pendant.jpg" alt="Win this pendant"
+             width="318">
+        <div class="cross_promo_wrapper">
+            <div class="goudy_text cross_promo_head">
+                Win this pendant
+            </div>
+            <div class="lucida_text cross_promo_desc">
+                Play our fun guessing game 
+                <div>& win this diamond pendant!</div>
+            </div>
+            <button class="win_pendant_link light_blue_button" data-src="page_xpromo"
+                    data-medium="{{.Data.trackingName}}" style="width: 120px;">
+                Guess
+            </button>
+        </div>
+    </div>
+    <div class="cross_promo hot_trends">
+        <img src="{{.Config.STATIC_URL}}/images/home_hottest_trends.jpg" alt="Hottest trends"
+             width="318">
+        <div class="cross_promo_wrapper">
+            <div class="goudy_text cross_promo_head">
+                Discover stunning jewels
+            </div>
+            <div class="lucida_text cross_promo_desc">
+                Find & share 
+                <div>stunning jewellery</div>
+            </div>
+            <button class="hot_trends_link light_blue_button" data-src="page_xpromo"
+                    data-medium="{{.Data.trackingName}}" style="width: 120px;">
+                Discover
+            </button>
+        </div>
+    </div>
+    <div class="cross_promo play_hot">
+        <img src="{{.Config.STATIC_URL}}/images/home_hot_not.jpg" alt="Hot or not"
+             width="318">
+        <div class="hp_cross_promo_wrapper">
+            <div class="goudy_text cross_promo_head">
+                Test your style quotient
+            </div>
+            <div class="lucida_text cross_promo_desc">
+                Rate jewellery images 
+                <div>& unlock mystery gifts</div>
+            </div>
+            <button class="play_hot_link light_blue_button" data-src="page_xpromo"
+                    data-medium="{{.Data.trackingName}}" style="width: 120px;">
+                Play
+            </button>
+        </div>
+    </div>
+    <div class="cross_promo earn_cash">
+        <img src="{{.Config.STATIC_URL}}/images/home_gift_500.jpg" alt="Gift 500,Get 500"
+             width="318">
+        <div class="cross_promo_wrapper">
+            <div class="goudy_text cross_promo_head">
+                Gift <span class="lucida_text">500</span>, Get <span class="lucida_text">500</span>!
+            </div>
+            <div class="lucida_text cross_promo_desc">
+                Gift your friends <span class="WebRupee">Rs.</span>500 & 
+                <div>earn up to <span class="WebRupee">Rs.</span>5000 in cash credits</div>
+            </div>
+            <button class="earn_cash_link light_blue_button" data-src="page_xpromo"
+                    data-medium="{{.Data.trackingName}}" style="width: 120px;">
+                Gift
+            </button>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+window.onload = function() {
+    var firstOffset = $('#first').offset();
+    var tenthOffset = $('#tenth').offset();
+    $(window).scroll(function() {
+        var fromTop = $(window).scrollTop();
+        if(fromTop > firstOffset.top - 200 && fromTop < tenthOffset.top - 200) {
+            $('#customize_message').show();
+            $('#scroll_indicator').show();
+            $('#share_with_magic').show();
+        } else {
+            $('#customize_message').hide();
+            $('#scroll_indicator').hide();
+            $('#share_with_magic').hide();
+        }
+    });
+    $('#scroll_indicator').click(function() {
+        var currentTop = $(window).scrollTop();
+        $(window).scrollTop(currentTop + 400);
+    });
+    if(window.innerWidth >= 1200) {
+        $('#scroll_indicator').attr('style',
+        'left: ' + (window.innerWidth / 2 + 520) + 'px;');
+    }
+    $('#cross_promo_region').hide();
+};
+</script>

@@ -1,0 +1,37 @@
+<!-- /var/www/solr-4.6.1/example/solr-webapp/webapp/WEB-INF/web.xml -->
+  <security-constraint>
+    <web-resource-collection>
+        <web-resource-name>Admin</web-resource-name>
+        <!--url-pattern>/collection1/select</url-pattern-->
+        <url-pattern>/*</url-pattern>
+        <http-method>GET</http-method>
+        <http-method>POST</http-method>
+    </web-resource-collection>
+    <auth-constraint>
+        <role-name>admin</role-name>
+    </auth-constraint>
+
+    <user-data-constraint>
+        <!-- transport-guarantee can be CONFIDENTIAL, INTEGRAL, or NONE -->
+        <transport-guarantee>NONE</transport-guarantee>
+    </user-data-constraint>
+  </security-constraint>
+
+  <security-constraint>
+    <web-resource-collection>
+        <web-resource-name>Public</web-resource-name>
+        <url-pattern>/collection1/select</url-pattern>
+        <http-method>GET</http-method>
+        <http-method>POST</http-method>
+    </web-resource-collection>
+
+    <user-data-constraint>
+        <!-- transport-guarantee can be CONFIDENTIAL, INTEGRAL, or NONE -->
+        <transport-guarantee>NONE</transport-guarantee>
+    </user-data-constraint>
+  </security-constraint>
+
+  <login-config>
+    <auth-method>BASIC</auth-method>
+    <realm-name>Admin Realm</realm-name>
+  </login-config>

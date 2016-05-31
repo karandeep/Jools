@@ -1,0 +1,20 @@
+<script type="text/javascript" src="{{.Config.STATIC_URL}}/js/libs/jquery/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="{{.Config.STATIC_URL}}/js/libs/jqueryui/jquery-ui-1.10.3.custom.min.js"></script>
+<script type="text/javascript" src="{{.Config.STATIC_URL}}/js/libs/jquery/jquery.imagesloaded.js"></script>
+<script type="text/javascript" src="{{.Config.STATIC_URL}}/js/libs/blocksit/blocksit.min.js"></script>
+
+<script type="text/javascript">
+var configObj = null;
+var inspirationObj = null;
+var utilObj = null;
+var tagObj = null;
+
+$(document).ready(function() {
+    jQuery.support.cors = true;
+    configObj = new Config({{.Config.STATIC_URL}}, {{.Config.BASE_URL}}, {{.TrackingName}})
+    inspirationObj = new Inspiration({{.Inspirations}});
+    utilObj = new Util();
+    tagObj = new Tag({{.AllTags}});
+});
+</script>
+    

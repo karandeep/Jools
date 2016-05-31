@@ -1,0 +1,97 @@
+Option Explicit
+Dim MATERIAL_FOLDER, GROUND_PLANE, HDR_FILE
+Dim OVERRIDE_VIEWPORT, VIEWPORT_FILE 
+Dim TOOL_NAME
+
+TOOL_NAME = "Matrix"
+
+Call Main()
+
+Sub Main()
+	Dim excelFile
+	Rhino.Print "Select Batch Rendering Excel File" 
+	excelFile = Rhino.OpenFileName("Open", "ChooseBatchRendering Excel File (*.xlsx)|")
+	If IsNull(excelFile) Then Exit Sub
+	processExcel excelFile
+End Sub
+
+
+Sub processExcel(excelFileName)
+	
+	Dim objExcel, objSheet, objCells
+	Dim nRow, nCol, modelFile, outputFile, localViewPortFile
+	Dim layerName, materialName
+	
+	On Error Resume Next
+	Set objExcel = CreateObject("Excel.Application")
+	If (Err.Number <> 0) Then
+		Exit Sub
+	End If
+	objExcel.DisplayAlerts = 0  
+	On Error Resume Next
+	Call objExcel.Workbooks.Open(excelFileName, False, True)
+	If (Err.Number <> 0) Then
+		Exit Sub
+	End If
+	Set objSheet = objExcel.ActiveWorkbook.Worksheets(1)
+	Set objCells = objSheet.Cells
+
+	MATERIAL_FOLDER = Trim(objCells(1, 2).Value)
+	GROUND_PLANE = Trim(objCells(2, 2).Value)
+	HDR_FILE = Trim(objCells(3, 2).Value)
+	OVERRIDE_VIEWPORT = objCells(4, 2).Value
+	VIEWPORT_FILE = Trim(objCells(5, 2).Value)
+	
+	nRow = 11
+	
+	Rhino.Command "_-Open " & Chr(34) & modelFile & Chr(34), 0
+	Rhino.DocumentModified False
+	Rhino.Command "_-SetCurrentRenderPlugin " & Chr(34) & "V-Ray for " & TOOL_NAME & Chr(34), 0
+	Rhino.Command "_-visLoadDirectoryVismats " & Chr(34) & MATERIAL_FOLDER & Chr(34) & " -1 -1 "
+	Rhino.Command "_-visLoadVisopt " & Chr(34) & HDR_FILE & Chr(34) & " _Enter"
+	
+	Do While (Not IsEmpty(objCells(nRow, 1).Value))
+		modelFile = Trim(objCells(nRow, 1).Value)
+		outputFile = Trim(objCells(nRow, 2).Value)
+	
+		For nCol = 3 To 18
+			If (Not IsEmpty(objCells(nRow, nCol).Value)) Then
+				layerName = Trim(objCells(10, nCol).Value)
+				materialName = Trim(objCells(nRow, nCol).Value)
+				Rhino.Command "_-SelLayer " & Chr(34) & layerName & Chr(34) & " _Enter"
+				Rhino.Print "Selected Layer " & layerName
+				Rhino.Command "_-visapplymaterial " & Chr(34) & materialName & Chr(34) & " _Enter"
+				Rhino.Print "Applied Material " & materialName & " to Layer" & layerName
+				Rhino.Command "_-SelNone ", 0
+			End If	
+		Next
+		If (OVERRIDE_VIEWPORT) Then
+			localViewPortFile = Trim(objCells(nRow, 20).Value)
+			If (Not IsEmpty(localViewPortFile)) Then 
+				Rhino.Command "_-ReadViewportsFromFile " & Chr(34) & localViewPortFile & Chr(34) & " _Enter"		
+			Else 
+				Rhino.Command "_-ReadViewportsFromFile " & Chr(34) & VIEWPORT_FILE & Chr(34) & " _Enter"
+			End If
+			Rhino.Command "-sellayer User Layer 01 "
+			
+		End If	
+		Rhino.Command "_-visLoadVisopt " & Chr(34) & HDR_FILE & Chr(34) & " _Enter"
+		Rhino.Command "_Render"
+		Rhino.Command "_-SaveRenderWindowAs " & chr(34) & outputFile & chr(34) & " _Enter"
+		
+		If (InStr(LCase(outputFile), ".jpg") > 0) Then
+			outputFile = Replace(outputFile, ".jpg", ".png", 1, -1, 1)
+			Rhino.Command "_-SaveRenderWindowAs " & chr(34) & outputFile & chr(34) & " _Enter"		
+		End If
+		If (InStr(LCase(outputFile), ".png") > 0) Then
+			outputFile = Replace(outputFile, ".png", ".tga", 1, -1, 1)
+			Rhino.Command "_-SaveRenderWindowAs " & chr(34) & outputFile & chr(34) & " _Enter"		
+		End If
+		Rhino.Command "_-CloseRenderWindow _Enter"
+		Rhino.DocumentModified False
+		nRow = nRow + 1
+		Call Rhino.Sleep(10)
+	Loop	
+	Call objExcel.ActiveWorkbook.Close(False)
+	objExcel.Application.Quit 
+End Sub

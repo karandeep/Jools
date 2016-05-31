@@ -1,0 +1,70 @@
+<div style="padding-top: 10px; text-align: center;">
+    <img src="{{.Config.STATIC_URL}}/images/earrings.jpg" width="220">
+    <h3 style="background: rgba(139,210,206,0.3); width: 160px; margin: auto;">
+        Introducing
+    </h3>
+    <h1 class="goudy_text">
+        The magic of customized jewellery
+    </h1>
+    <h3 class="goudy_text">
+        At special members-only discounts
+    </h3>
+    <div>
+    <button class="light_pink_button not_logged_in sign_up" style="width: 200px;">
+        Become a member
+    </button>
+</div>
+<div style="margin-top: 10px;">
+    <a href="{{.Config.BASE_URL}}/inspiration/hotTrends?utm_source=hp_link">
+        <div class="hp_link hot_trends">
+            <img src="{{.Config.STATIC_URL}}/images/dropdown_explore.jpg" alt="" 
+                 class="hp_link_img right">
+            <div class="hp_link_heading">
+                Browse Trends
+            </div>
+            <p class="hp_link_desc goudy_text">
+                Discover the hottest jewellery trends
+            </p>
+        </div>
+    </a>
+    <a href="{{.Config.BASE_URL}}/contest/winPendant?utm_source=hp_link">
+        <div class="hp_link hot_trends">
+            <img src="{{.Config.STATIC_URL}}/images/dropdown_winpendant.jpg" alt="" 
+                 class="hp_link_img right">
+            <div class="hp_link_heading">
+                Win a pendant
+            </div>
+            <p class="hp_link_desc goudy_text">
+                Guess the price & enter the contest!
+            </p>
+        </div>
+    </a>
+    <a href="{{.Config.BASE_URL}}/user/earnCash?utm_source=hp_link">
+        <div class="hp_link earn_cash">
+            <img src="{{.Config.STATIC_URL}}/images/dropdown_getcredits.jpg" alt="" 
+                 class="hp_link_img right">
+            <div class="hp_link_heading">
+                Earn cash credits
+            </div>
+            <p class="hp_link_desc goudy_text">
+                Earn up to <span class="WebRupee">Rs.</span><span class="lucida_text">5000</span> in cash credits.
+            </p>
+        </div>
+    </a>
+</div>
+<div style="margin-top: 10px; text-align: center;" class="not_logged_in">
+    <h2 class="goudy_text">
+        Become a member today & qualify for amazing gifts and giveaways!
+    </h2>
+    <div class="fb_login" onclick="tryFBLogin('hp');"
+         style="display: inline-block; margin-bottom: 10px;">
+        <img src="{{.Config.STATIC_URL}}/images/icons/fb_login.png" alt="Login with Facebook">
+    </div>
+    <button class="light_pink_button sign_up"
+            style="vertical-align: middle; width: 200px; margin-bottom: 10px;">Login with email</button>
+</div>
+<script type="text/javascript">
+window.onload = function() {
+
+};
+</script>

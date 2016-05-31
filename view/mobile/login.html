@@ -1,0 +1,64 @@
+<div style="text-align: center; padding-top: 10px;">
+    <div class="fb_login" onclick="tryFBLogin('login_popup');">
+        <img src="{{.Config.STATIC_URL}}/images/icons/fb_login.png" 
+             alt="Login with Facebook" width="220">
+    </div>
+    <div style="font-size: 20px; margin: 10px 0;">
+        or
+    </div>
+    <div class="error_message_wrapper" style="display:none;">
+        <div class="error_message">
+        </div>
+    </div>
+    <div> 
+        <input type="email" name="login_email" id="signup_login_email" 
+               style='width: 220px; margin-bottom: 10px;'
+               placeholder="Enter your email address">
+    </div>
+    <div>
+        <input id="login_password" type="password" name="login_password" placeholder="Enter password"
+               style="width: 220px; margin-bottom: 10px;">
+    </div>
+    <input id="sign_in_button" type="submit" value="Login with email"
+           class="light_pink_button" style="width: 220px;">
+    <div style="margin-top: 20px; margin-bottom: 20px;">
+        Forgot your password? 
+        <span class="like_link forgot_pass">Reset it</span>
+    </div>
+    <div>
+        <span>Not a member yet?</span>
+        <span class="like_link sign_up">
+            Sign up here
+        </span>
+    </div>
+</div>
+<script type="text/javascript">
+window.onload = function() {
+    $('#sign_in_button').click(function(e) {
+        e.preventDefault();
+        var email = $('#login_email_id').val();
+        var pwd = $('#login_password').val();
+        if (email == '' || pwd == '') {
+            $('.error_message_wrapper > .error_message').text('Please enter valid non - empty values for email and password');
+            $('.error_message_wrapper').show();
+            return;
+        }
+
+        $.ajax({
+            type: "POST",
+            url: '{{.Config.BASE_URL}}/user/authenticate',
+            data: {login_email: email, login_password: pwd},
+            success: authenticationResult,
+            dataType: 'json'
+        });
+    });
+    function authenticationResult(response) {
+        if (response.Success == false) {
+            $('.error_message_wrapper > .error_message').text(response.Data.message);
+            $('.error_message_wrapper').show();
+            return;
+        }
+        window.location = '{{.Config.BASE_URL}}';
+    }
+};
+</script>

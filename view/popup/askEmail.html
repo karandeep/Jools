@@ -1,0 +1,41 @@
+<div style='text-align: center;'>
+    <div style='font-size: 30px; margin-bottom: 20px; margin-top: 10px; letter-spacing: 2px;'>
+        The pendant is almost yours!
+    </div>
+    <div style="margin:20px 5px; font-size: 22px;">
+        We have received your price. Tell us who you are so we can submit your entry.
+    </div>
+    <div>
+        <div class="fb_login" onclick="tryFBLogin('post_price');" style="margin-bottom: 10px;">
+            <img src="{{.Config.STATIC_URL}}/images/icons/fb_login.png" alt="Login with Facebook">
+        </div>
+        <div style="text-transform: uppercase; font-size: 16px; margin-bottom: 15px;">
+            Or sign up for free below
+        </div>
+        <div style="margin-bottom: 20px;">
+            <form id="request_access_after_price_form" action="{{.Config.BASE_URL}}/user/create" method="post">
+                EMAIL :
+                <input type='text' id="login_email_after_price" 
+                       name="login_email" placeholder="Enter your email address"
+                       style="width: 240px;">
+                <input id="referrer_after_price" type="hidden" name="ref">
+            </form>
+        </div>
+        <div>
+            <button id="submit_email_after_price" class="light_pink_button">Done</button>
+        </div>
+    </div>
+</div>
+<script type='text/javascript'>
+    $('#referrer_after_price').attr('value', referrer);
+    $('#submit_email_after_price').click(function() {
+        var email = $('#login_email_after_price').val();
+        if(email == "") {
+            return;
+        }
+        trackObj.count("action", "prem", "signup_intent","post_price","submit_email", email);
+	trackObj.count("action", "prem", "sign_up","post_price","submit_email", email);
+        userObj.submitEmail(email);
+    });
+    utilObj.styleInputsAndButtons();
+</script>

@@ -1,0 +1,15 @@
+Welcome to Jools
+
+You're in and we see you!
+
+Thanks for registering for the pre-launch of Jools.
+
+Just one small thing - go ahead and click the confirmation link below to receive your credit of Rs. 500! 
+Confirm Email {{.VerificationLink}}
+
+Tell your friends about us & get guaranteed credits of Rs. 5000 for both you & your friends. So what are you waiting for? Follow this link to get started: {{.VerificationLink}}
+
+Stay up to date by connecting on https://www.facebook.com/jools.in and https://twitter.com/joolsandyou
+
+Cheers,
+Team Jools

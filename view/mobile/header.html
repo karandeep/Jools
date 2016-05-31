@@ -1,0 +1,39 @@
+<div id="menu_bar">
+    <img id="menu_toggle" src="{{.Config.STATIC_URL}}/images/icons/menu.png" height="34" class="left">
+    <div id="logo_top">
+        <a href="{{.Config.BASE_URL}}/?utm_source=logo">
+            <img src="{{.Config.STATIC_URL}}/images/icons/logo_white.png" alt="Jools" height="34">
+        </a>
+    </div>
+</div>
+<div id="side_bar">
+    <div class="mobi_nav_link">
+        <a href="{{.Config.BASE_URL}}/inspiration/hotTrends?utm_source=menu">
+            Browse Trends
+        </a>
+    </div>
+    <div class="mobi_nav_link">
+        <a href="{{.Config.BASE_URL}}/contest/winPendant?utm_source=menu">
+            Win a pendant
+        </a>
+    </div>
+    <div class="mobi_nav_link">
+        <a href="{{.Config.BASE_URL}}/user/earnCash?utm_source=menu">
+            Earn cash credits
+        </a>
+    </div>
+    <div class="mobi_nav_link not_logged_in sign_in" data-src="menu">
+        Sign in
+    </div>
+    <div class="mobi_nav_link not_logged_in sign_up" data-src="menu">
+        Sign up
+    </div>
+    <div class="mobi_nav_link logged_in logout" data-src="menu">
+        Sign out
+    </div>
+    <div class="mobi_nav_link">
+        <a href="mailto:team@jools.in?subject=Comments/Questions&body=Hello Folks at Jools,">
+            Contact us
+        </a>
+    </div>
+</div>

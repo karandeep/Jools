@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /inspiration/getNextLot
+Disallow: /staging
+Disallow: /service

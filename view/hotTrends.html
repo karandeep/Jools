@@ -1,0 +1,44 @@
+<div style="margin-top: 30px; text-align: center;">
+    <div class="page_header">
+        Hottest Trends
+    </div>
+    <div class="sub_header">
+        Discover & share the hottest jewellery trends
+        <button id="show_upload" class="light_pink_button">Upload</button>
+    </div>
+</div>
+<div id="allInspirations">
+</div>
+<img class="loading" src="{{.Config.STATIC_URL}}/images/icons/loading_v1.gif" 
+    alt="" height="30">
+<div id="go_up_indicator">
+    <div style="text-align: center; color: #333;letter-spacing: 0;">
+        Back to top
+    </div>
+    <img src='{{.Config.STATIC_URL}}/images/icons/blue_arrow_up.png' alt=''>
+</div>
+<script type="text/javascript">
+window.onload = function() {
+    inspirationObj.showInspirationBoard();
+    inspirationObj.markFavorited();
+    $('#show_upload').click(function() {
+        if(!userObj.isLoggedIn()) {
+            userObj.showLoginPopup();
+            return;
+        }
+        trackObj.count("action", "inspire", "upload", "click");
+        utilObj.createPopup("{{.Config.BASE_URL}}/inspiration/upload",
+                {}, 900, 500, true); 
+    });
+    $('#go_up_indicator').click(function() {
+        $(window).scrollTop(0); 
+    });
+    if(window.innerWidth >= 1200) {
+        $('#go_up_indicator').attr('style',
+        'display: block; left: ' + (window.innerWidth / 2 + 520) + 'px;');
+    }
+    if({{.Data.showInspirationInfo}} != "") {
+        inspirationObj.showInspirationInfo({{.Data.showInspirationInfo}});
+    }
+};
+</script>

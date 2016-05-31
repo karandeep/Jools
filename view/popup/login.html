@@ -1,0 +1,66 @@
+<div id="login_popup" style="text-align: center;">
+    <div style="margin-bottom: 10px; margin-top: 10px;">
+        <img src="{{.Config.STATIC_URL}}/images/logo_v2.png" alt="Jools" height="70">
+    </div>
+    <div class="error_message_wrapper" style="display:none;">
+        <div class="error_message">
+        </div>
+    </div>
+    <div class="fb_login" onclick="tryFBLogin('login_popup');">
+        <img src="{{.Config.STATIC_URL}}/images/icons/fb_login.png" alt="Login with Facebook">
+    </div>
+    <div style="font-size: 16px; margin: 20px 0;">
+        --------- OR ---------
+    </div>
+    <form action="{{.Config.BASE_URL}}/user/authenticate" method="POST">
+        <div>
+            <input id="login_email_id" type="email" name="login_email" placeholder="Enter your email address"
+                   style="width: 240px; margin-bottom: 10px;">
+            <input id="login_password" type="password" name="login_password" placeholder="Enter password"
+                   style="width: 240px; margin-bottom: 10px;">
+            <div class="like_link forgot_pass" style="margin-bottom: 5px;">Forgot your password?</div>
+            <input id="sign_in_button" type="submit" value="Sign In"
+                   class="light_pink_button" style="width: 240px;">
+            <div style="margin-top: 10px; font-style: italic;">
+                <span class="tiny_text">Not a member yet?</span>
+                <span id="signup_login_popup" class="like_link">Sign up here</span>
+            </div>
+        </div>
+    </form>
+</div>
+<script type="text/javascript">
+    $('#signup_login_popup').click(function() {
+        utilObj.closePopup();
+        userObj.showSignupPopup();
+    });
+    $('#sign_in_button').click(function(e) {
+        e.preventDefault();
+        var email = $('#login_email_id').val();
+        var pwd = $('#login_password').val();
+        if (email == '' || pwd == '') {
+            $('#login_popup > .error_message_wrapper > .error_message').text('Please enter valid non - empty values for email and password');
+            $('#login_popup > .error_message_wrapper').show();
+            return;
+        }
+
+        $.ajax({
+            type: "POST",
+            url: '{{.Config.BASE_URL}}/user/authenticate',
+            data: {login_email: email, login_password: pwd},
+            success: authenticationResult,
+            dataType: 'json'
+        });
+    });
+    function authenticationResult(response) {
+        if (response.Success == false) {
+            $('#login_popup > .error_message_wrapper > .error_message').text(response.Data.message);
+            $('#login_popup > .error_message_wrapper').show();
+            return;
+        }
+        utilObj.reloadPage();
+    }
+    $('.forgot_pass').click(function(e) {
+        userObj.showForgotPasswordPopup();
+    });
+    utilObj.styleInputsAndButtons();
+</script>

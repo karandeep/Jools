@@ -1,0 +1,450 @@
+<script type="text/javascript">
+var referrer = {{.Referrer}};
+if(self != top) {
+    //Redirect if main site is inside an iframe for best user experience
+    //top.location = {{.Config.BASE_URL}} + "/?utm_source=FBApp&jref=" + referrer;
+}
+var _prum = [['id', '528f01a3abe53d0377000000'], 
+    ['mark', 'firstbyte', (new Date()).getTime()]];
+var fbAppId = {{.Config.FB_APP_ID}};
+var domain = {{.Config.DOMAIN}};
+</script>
+<script type="text/javascript" src="{{.Config.STATIC_URL}}/js/libs/jquery/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="{{.Config.STATIC_URL}}/js/libs/jqueryui/jquery-ui-1.10.3.custom.min.js"></script>
+<span id="inspirations_js"></span>
+<script type="text/javascript">
+if ({{.Inspirations}} != "") {
+    var ref = document.getElementById('inspirations_js');
+    js = document.createElement("script");
+    js.src = "{{.Config.STATIC_URL}}/js/libs/jquery/jquery.imagesloaded.js";
+    ref.parentNode.insertBefore(js, ref);
+    js = document.createElement("script");
+    js.src = "{{.Config.STATIC_URL}}/js/libs/blocksit/blocksit.min.js";
+    ref.parentNode.insertBefore(js, ref);
+}
+
+if ({{.TrackingName}} == "productList" || {{.TrackingName}} == "shop") {
+   //The approach used for inspirations_js didn't work here... 
+   //seeing javascript error for selectric not defined 
+}
+</script>
+<script type="text/javascript" src="{{.Config.STATIC_URL}}/js/libs/selectric/js/jquery.selectric.min.js"></script>
+<!--script type="text/javascript" src="{{.Config.STATIC_URL}}/js/libs/nivoslider/jquery.nivo.slider.pack.js"></script-->
+<!--link href="{{.Config.STATIC_URL}}/js/libs/selectric/selectric.css" rel="stylesheet"-->
+<script type="text/javascript">
+var cartObj = null;
+var commentObj = null;
+var contestObj = null;
+var emailObj = null;
+var expObj = null;
+var favoriteObj = null;
+var facebookWrapperObj = null;
+var inspirationObj = null;
+var inviteTierObj = null;
+var profanityFilterObj = null;
+var ratingGameObj = null;
+var ratingObj = null;
+var searchObj = null;
+var syncObj = null;
+var trackObj = null;
+var utilObj = null;
+var userObj = null;
+var viewsObj = null;
+var searchString = "-";
+var bodyHeight = null;
+window.fbAsyncInit = function() {
+    FB.init({
+        appId: fbAppId,
+        channelUrl: '//' + domain + '/channel.html',
+        status: true, // check login status
+        cookie: true, // enable cookies to allow the server to access the session
+        xfbml: true,  // parse XFBML
+        frictionlessRequests : true
+    });
+    
+    FB.Event.subscribe('edge.create',
+        function(href, widget) { 
+            contestObj.likePage(1);
+            trackObj.count("action", {{.TrackingName}}, "fb_like","like");
+        }
+    );
+    FB.Event.subscribe('edge.remove',
+        function(href, widget) {
+            if(href == {{.Config.FB_PAGE}} + "/") {
+                contestObj.likePage(0);
+                trackObj.count("action", {{.TrackingName}}, "fb_like", "unlike");
+            }
+        }
+    );
+};
+function tryFBLogin(clickSrc) {
+    facebookWrapperObj.tryFBLogin(clickSrc);
+}
+
+$(document).ready(function() {
+        jQuery.support.cors = true;
+        cartObj = new Cart();
+        $('#view_cart').click(function() {
+            var cartItems = cartObj.getCartItems();
+            var displayText = 'Your cart is currently empty';
+            if (cartItems != null) {
+                displayText = "";
+                var maxLen = cartItems.length;
+                for (var i = 0; i < maxLen; i++) {
+                    displayText += "Item name: " + cartItems[i].name + "<br>";
+                    displayText += "Item price: " + cartItems[i].price + "<br>";
+                    displayText += "Item quantity: " + cartItems[i].qty + "<br>";
+                    displayText += "<img src='" +
+                    {{.Config.STATIC_URL}} + "/images/" + cartItems[i].index + ".jpg' alt=''><br>";
+                }
+            }
+            $('#page_content').html(displayText);
+        });
+        searchObj = new Search({{.Config.SOLR_BASE}}, {{.Config.BASE_URL}});
+        $('#search_box').keyup(function() {
+            var newSearchString = $('#search_box').val();
+            if (newSearchString != searchString) {
+                searchString = newSearchString;
+                searchObj.searchFor(searchString);
+            }
+        });
+        configObj = new Config({{.Config.STATIC_URL}}, {{.Config.BASE_URL}}, 
+            {{.Config.INSPIRATIONS_URL}}, {{.Config.DESIGNS_URL}}, {{.TrackingName}}, 
+            {{.Config.FB_APP_NAME}});
+        trackObj = new Track();
+        utilObj = new Util();
+        utilObj.styleInputsAndButtons();
+        profanityFilterObj = new ProfanityFilter(
+            {{.Config.BASE_URL}} + '/data/badWords.json',
+            {{.Config.BASE_URL}} + '/data/validWords.json'
+        );
+        profanityFilterObj.populateValidWords();
+        profanityFilterObj.populateBadWords();
+        commentObj = new Comment();
+        favoriteObj = new Favorite();
+        facebookWrapperObj = new FacebookWrapper();
+        viewsObj = new Views();
+        userObj = new User({{.IsUserLoggedIn}}, {{.UserData}}, {{.Referrer}});
+        inviteTierObj = new InviteTier();
+        inspirationObj = new Inspiration({{.Inspirations}})
+        expObj = new Experiment({{.ExperimentInfo}});
+        emailObj = new Email();
+        contestObj = new Contest();
+        ratingObj = new Rate({{.TopRated}}, {{.HotImages}});
+        ratingGameObj = new RatingGame();
+        syncObj = new Sync();
+        if (userObj.isLoggedIn()) {
+            syncObj.fetchFromBackend();
+        }
+        favoriteObj.getAllFavorites();
+        expObj.processAllAccessed();
+        contestObj.updateContestDetails();
+        ratingObj.showCurrentPair();
+        ratingObj.showTopRated();
+        ratingGameObj.updateState();
+        
+	if ({{.Source}} != "") {
+            trackObj.count("visit", {{.TrackingName}}, {{.Source}}, {{.Medium}}, {{.Content}}, {{.Campaign}});
+        } else {
+            trackObj.count("visit", {{.TrackingName}}, "blank", {{.Medium}}, {{.Content}}, {{.Campaign}});
+        }
+        $('.login').click(function() {
+            userObj.showLoginPopup();
+        });
+        $('.logout').click(function(e) {
+            e.preventDefault();
+            window.location = '{{.Config.BASE_URL}}/user/logout';
+        });
+        $('.forgot_pass').click(function(e) {
+            userObj.showForgotPasswordPopup();
+        });
+        if ({{.IsUserLoggedIn}} == true) {
+            $('.logged_in').show();
+        } else {
+            $('.not_logged_in').show();
+        }
+        if ({{.ShowFBConnect}} == true) {
+            userObj.showFBConnect();
+        }
+        if ({{.ShowInitialCongrats}} == true) {
+            userObj.showInitialCongrats();
+        }
+        if ({{.SignupCompletionReqd}} == true
+                && {{.TrackingName}} != "completeSignup") {
+            userObj.signupCompletionReqd();
+        }
+        if ({{.ShowChangePassword}} == true
+                && {{.TrackingName}} != "changePass") {
+            userObj.showChangePassword();
+        }
+        if ({{.ShowInviteFriends}} != "") {
+            userObj.showInviteFriends({{.ShowInviteFriends}});
+        }
+        $('.link_to_fb').click(function() {
+            window.open({{.Config.FB_PAGE}}, "_blank");
+        });
+        $('.link_to_twtr').click(function() {
+            window.open({{.Config.TWTR_PAGE}}, "_blank");
+        });
+        $('.link_to_gplus').click(function() {
+            window.open({{.Config.GOOGLE_PLUS_PAGE}}, "_blank");
+        });
+        bodyHeight = $('body').height();
+        $('.logo_left').click(function() {
+            top.location = "{{.Config.BASE_URL}}";
+        });
+        $('.twtr_share_button').click(function(e) {
+            var width  = 575,
+                height = 400,
+                left   = ($(window).width()  - width)  / 2,
+                top    = ($(window).height() - height) / 2,
+                opts   = 'status=1' +
+                         ',width='  + width  +
+                         ',height=' + height +
+                         ',top='    + top    +
+                         ',left='   + left;
+            var url = "https://twitter.com/intent/tweet?text=" + 
+                    encodeURIComponent($(this).data('text')) + "&url=" +
+                    encodeURIComponent($(this).data('url')) + "&via=" +
+                    encodeURIComponent($(this).data('via'));
+            window.open(url, 'twitter', opts);
+            trackObj.count("action", {{.TrackingName}}, "share", "twtr", "click");
+        });
+        $('.fb_share_button').click(function(e) {
+            e.preventDefault();
+            trackObj.count("action", {{.TrackingName}}, "share", "fb", "click");
+            var uri = $(this).data('href');
+            if(uri == "" || typeof uri == "undefined") {
+                uri = "https://www.facebook.com/sharer.php?u=http%3A%2F%2Fwww.jools.in";
+            } else {
+                uri = "https://www.facebook.com/sharer.php?u=" + encodeURIComponent(uri);
+            }
+            window.open(uri, "Facebook Share", 'height=500,width=900');
+            setTimeout(function() {
+               contestObj.sharePage(); 
+            }, 10000);
+           /*
+            FB.ui({
+                method: 'feed',
+                link: {{.Config.REFERRAL_BASE}},
+                name: "Jools | A Diamond pendant is waiting for you",
+                picture: {{.Config.REFERRAL_BASE}} + "/images/guess_price.jpg",
+                description: "Jools will change the way you experience jewellery. Play our fun guessing game to win a limited edition infinity diamond pendant.",
+            }, function(response){
+                if(response == null) {
+                    trackObj.count("action", {{.TrackingName}}, "feed", "fb", "abort");
+                    return;
+                }
+                //Publish successful - take appropriate action
+                contestObj.sharePage();
+                trackObj.count("action", {{.TrackingName}}, "feed", "fb", "success");
+            });
+        */
+        });
+        $('.fb_mystery_gift').click(function() {
+            trackObj.count("action", {{.TrackingName}}, "feed", "hot_contest", "click");
+            var pictureUrl = {{.Config.STATIC_URL}} + "/images/feed/" 
+                    + $(this).data('picture');
+            var feedDescription = $(this).data('description');
+            var feedTitle = $(this).data('title');
+            FB.ui({
+                method: 'feed',
+                link: {{.Config.REFERRAL_BASE}},
+                picture: pictureUrl,
+                description: feedDescription,
+                name: feedTitle,
+            }, function(response){
+                $(window).scrollTop( $('#hot_or_not_header').offset().top );
+                if(response == null) {
+                    trackObj.count("action", {{.TrackingName}}, "feed", "hot_contest", "abort");
+                    return;
+                }
+                $('#rating_game_share').hide();
+                $('.rating_prize').show();
+                trackObj.count("action", {{.TrackingName}}, "feed", "hot_contest", "success");
+            });
+        });
+        $('.fb_invite_friends').click(function() {
+			var src = $(this).data('src');
+			if(src == "") {
+				src = {{.TrackingName}};
+			}
+			trackObj.count("action", src, {{.TrackingName}}, "invite", "fb", "click");
+		    facebookWrapperObj.inviteFriends();
+        });
+        $('.sign_in').click(function() {
+            userObj.showLoginPopup();
+        });
+        $('.sign_up').click(function() {
+            userObj.showSignupPopup();
+        });
+        $('.gmail_invite_friends').click(function() {
+            var src = $(this).data('src');
+            if(src == "") {
+                src = {{.TrackingName}};
+            }
+            if(userObj.getUserId() == 0) {
+                trackObj.count("action", src, {{.TrackingName}}, "signup", configObj.GOOGLE, "click");
+                userObj.showSignupPopup();
+            } else if (userObj.isLoggedIn() == false) {
+                trackObj.count("action", src, {{.TrackingName}}, "login", configObj.GOOGLE, "click");
+                userObj.showLoginPopup();
+            } else if(userObj.gmailImportStatus() == 1) {
+                trackObj.count("action", src, {{.TrackingName}}, "invite", configObj.GOOGLE, "click");
+                userObj.showInviteFriends(configObj.GOOGLE);
+            } else {
+                trackObj.count("action", src, {{.TrackingName}}, "import", configObj.GOOGLE, "click");
+                window.open('{{.Config.REFERRAL_BASE}}/import/google?userId=' + userObj.getUserId(), 'Import Contacts', 'width=500,height=500,top=50,left=300');
+            }
+        });
+        $('.yahoo_invite_friends').click(function() { 
+            var src = $(this).data('src');
+            if(src == "") {
+                src = {{.TrackingName}};
+            }
+            if(userObj.getUserId() == 0) {
+                trackObj.count("action", src, {{.TrackingName}}, "signup", configObj.YAHOO, "click");
+                userObj.showSignupPopup();
+            } else if (userObj.isLoggedIn() == false) {
+                trackObj.count("action", src, {{.TrackingName}}, "login", configObj.YAHOO, "click");
+                userObj.showLoginPopup();
+            } else if(userObj.yahooImportStatus() == 1) {
+                trackObj.count("action", src, {{.TrackingName}}, "invite", configObj.YAHOO, "click");
+                userObj.showInviteFriends(configObj.YAHOO);
+            } else {
+                trackObj.count("action", src, {{.TrackingName}}, "import", configObj.YAHOO, "click");
+                window.open('{{.Config.REFERRAL_BASE}}/import/yahoo?userId=' + userObj.getUserId(), 'Import Contacts', 'width=500,height=500,top=50,left=300');
+            }
+        });
+        $('.nav_bar_link.{{.TrackingName}}').addClass('link_active');
+        $('.nav_bar_link').hover(function() {
+            if(!$(this).hasClass('link_active')) {
+                $(this).find('.nav_bar_link_details').show();
+            }
+        }, function() {
+            $(this).find('.nav_bar_link_details').fadeOut();
+        });
+        $('.top_header_link.{{.TrackingName}}').addClass('link_active');
+        $('.top_header_link').hover(function() {
+            if(!$(this).hasClass('link_active')) {
+                $(this).find('.nav_bar_link_details').show();
+            }
+        }, function() {
+            $(this).find('.nav_bar_link_details').fadeOut();
+        });
+        $('.cross_promo.{{.TrackingName}}').hide();
+        $('#menu_toggle').click(function(e) {
+            if($('#side_bar').is(':visible')) {
+                $('#side_bar').hide('slide', {direction: 'left'}, 500);
+            } else {
+                $('#side_bar').show('slide', {direction: 'left'}, 500);
+            }
+        });
+        var referralCount = userObj.getReferralCount();
+        var pWidth = inviteTierObj.getProgressBarWidth(referralCount);
+        $('.access_levels_progress').css('width', pWidth + "%");
+        
+        cartObj.updateItemCount();
+        utilObj.bindLinks();
+        if(typeof afterInit != "undefined" && afterInit != null) {
+            afterInit();
+        }
+});
+function restyleRecaptcha() {
+    if ($('#recaptcha_response_field').length == 0) {
+        setTimeout(restyleRecaptcha, 100);
+        return;
+    }
+    $('#recaptcha_response_field').button().css({
+            'font': 'inherit',
+            'color': 'inherit',
+            'text-align': 'left',
+            'outline': 'none',
+            'cursor': 'text',
+            'border': '1px solid #333333',
+            'margin-left': '0',
+            });
+}
+
+function displayRecaptcha() {
+    if (typeof Recaptcha == 'undefined') {
+        setTimeout(displayRecaptcha, 300);
+        return;
+    }
+    Recaptcha.create(
+            {{.Config.RECAPTCHA_PUBLIC}},
+            "captcha",
+            {
+            theme: "clean", //callback: Recaptcha.focus_response_field
+            }
+    );
+    restyleRecaptcha();
+}
+
+function downloadJSAtOnload() {
+    var js;
+    var ref = document.getElementsByTagName('script')[0];
+    var p = /^http:/.test(document.location) ? 'http' : 'https';
+    if ({{.IncludeRecaptcha}} == true) {
+        js = document.createElement("script");
+        js.id = 'recaptcha-js';
+        js.async = true;
+        js.src = 'http://www.google.com/recaptcha/api/js/recaptcha_ajax.js';
+        ref.parentNode.insertBefore(js, ref);
+        displayRecaptcha();
+    }
+    js = document.createElement("script");
+    js.id = 'facebook-jssdk';
+    js.async = true;
+    js.src = "//connect.facebook.net/en_US/all.js";
+    ref.parentNode.insertBefore(js, ref);
+    js = document.createElement("script");
+    js.id = 'twitter-wjs';
+    js.async = true;
+    js.src = p + '://platform.twitter.com/widgets.js';
+    ref.parentNode.insertBefore(js, ref);
+    
+    /*js = document.createElement("script");
+    js.id = 'pinterest-js';
+    js.async = true;
+    js.src = "//assets.pinterest.com/js/pinit.js";
+    ref.parentNode.insertBefore(js, ref);*/
+    /*
+    js = document.createElement("script");
+    js.id = 'linkedin-js';
+    js.async = true;
+    js.src = 'http://platform.linkedin.com/in.js';
+    ref.parentNode.insertBefore(js, ref);
+    */
+    (function(i, s, o, g, r, a, m){i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function(){
+     (i[r].q = i[r].q || []).push(arguments)}, i[r].l = 1 * new Date(); a = s.createElement(o),
+     m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+     })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+    ga('create', 'UA-45584534-1', 'jools.in');
+    ga('send', 'pageview');
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-45584534-2']);
+    _gaq.push(['_setDomainName', 'jools.in']);
+    _gaq.push(['_setAllowLinker', true]);
+    _gaq.push(['_trackPageview']);
+    (function() {
+     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+     ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+     })();
+    (function() {
+     var s = document.getElementsByTagName('script')[0]
+     , p = document.createElement('script');
+     p.async = 'async';
+     p.src = '//rum-static.pingdom.net/prum.min.js';
+     s.parentNode.insertBefore(p, s);
+     })();
+}
+if (window.addEventListener)
+    window.addEventListener("load", downloadJSAtOnload, false);
+else if (window.attachEvent)
+    window.attachEvent("onload", downloadJSAtOnload);
+else
+    window.onload = downloadJSAtOnload;
+
+</script>

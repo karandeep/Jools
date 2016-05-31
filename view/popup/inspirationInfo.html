@@ -1,0 +1,160 @@
+<div class="inspiration_popup_image_container">
+    <div id="info_preview_enabled" class="preview_enabled">
+    </div>
+</div>
+<div class="center right" style="margin-right: 20px; width: 290px;">
+    <div class="uploader_info">
+        <div id="uploader_name"></div>
+        <div id="uploaded_at" class="goudy_text"></div>
+    </div>
+    <div id="inspiration_popup_fav" class="like_option favorite clickable tooltip left" 
+         title="Add to favorites" style="margin-top: 5px;margin-bottom: 80px;padding-left: 5%;">
+        Like
+    </div>
+    <div id="inspiration_popup_fb_share"
+         class="fb_share_inspiration clickable tooltip left" title="Share on Facebook">
+        Share
+    </div>
+    <!--div id="inspiration_popup_pin_share"
+             style="float: left; margin-top: 7px;"
+             class="pin_share_inspiration clickable tooltip left" title="Share on Pinterest">
+        </div-->  
+    <div class="clear" style="margin: 50px 0; background: #f2f2f2; height: 5px;">
+    </div>
+    <div class="goudy_text center" style="margin-right: 20px; margin-bottom: 40px;">
+        <div style="font-size: 30px;">
+            Jewellery sales
+        </div>
+        <div style="font-size: 30px;">
+            launching in {{.Data.daysTillOpen}} days
+        </div>
+    </div>
+    <div class="center">
+        <button class="light_blue_button shop_link" style="width: 230px;"
+                data-src="ins_popup">
+            Get a sneak peek
+        </button>
+        <div style="margin-top: 10px;">
+            <button class="light_blue_button earn_cash_link" style="width: 230px;"
+                    data-src="ins_popup">
+                Claim cash credits
+            </button>
+        </div>
+    </div>
+</div>
+<!--div style="margin-top: 20px; height: 30px; font-size: 16px;">
+    <div class="left" style="width: 90px;">
+        <div class="viewed" style="float: left; margin-left: 0;">
+            <span id="inspiration_popup_view_count" style="margin-left: 5px;"></span>
+        </div>
+        <div class="tiny_text clear">VIEWS</div>
+    </div>
+    <div class="left" style="width: 90px;">
+        <div id="inspiration_popup_fav" class="favorite clickable tooltip" 
+             title="Add to favorites" style="float: left; margin-left: 0;">
+        </div>
+        <div class="tiny_text clear">FAVES</div>
+    </div>
+    <div class="left" style="width: 90px;">
+        <div class="inspiration_commented" style="float: left; margin-left: 0;">
+            <span id="inspiration_popup_comment_count" style="margin-left: 5px;"></span>
+        </div>
+        <div class="tiny_text clear">COMMENTS</div>
+    </div>
+</div-->
+<!--div style="margin-top: 20px; height: 40px;">
+    <button id="ins_popup_request_quote" class="light_pink_button">Request a quote</button>
+    <div id="ins_popup_quote_requested" style='display: none; font-size: 14px;'>
+        We've received your request for a quote for this design. 
+        We'll contact you soon with the pricing details.
+    </div>
+</div>
+<div style="font-size: 20px; font-weight: bold; margin-top: 20px;">
+    Comments (
+    <span id="num_comments">0</span>
+    )
+</div>
+<div id="inspiration_popup_comments">
+</div>
+<input id="info_comment_box" type="text" class="comment_box" 
+       style="width: 260px; padding: 0.4em; font-size: 14px; font-weight: normal;"
+       maxlength="1024" placeholder="What do you think of this piece?"-->
+<script type="text/javascript">
+var inspiration = JSON.parse({{.Data.inspiration}});
+var imageUrl = "{{.Config.STATIC_URL}}/images/inspirations/" + inspiration.ImageName;
+$('#info_preview_enabled').data('imgurl', imageUrl).html('<img src="' + imageUrl + '" alt="" class="inspiration_popup_image">');
+/*$('#info_comment_box').data('type', commentObj.INSPIRATION).data('subjectid', inspiration.EncId);
+$('#info_comment_box').unbind("keydown").keydown(function(e) {
+    if (e.keyCode == 13) {
+        var comment = $(this).val();
+        if (comment == '') {
+            return;
+        }
+        var type = $(this).data('type');
+        var subjectId = $(this).data('subjectid');
+        $(this).val('');
+        commentObj.postComment(type, subjectId, comment, 'inspiration_popup_comments', false);
+    }
+});*/
+utilObj.styleInputsAndButtons();
+//utilObj.enablePreviews();
+var timeText = utilObj.convertTimestampToText(inspiration.UploadedAt);
+if(inspiration.UploaderName != "") {
+    $('#uploader_name').text( utilObj.getFirstName(inspiration.UploaderName) );
+}
+$('#uploaded_at').text('uploaded ' + timeText);
+/*$('#num_comments').text(inspiration.CommentCount);
+$('#inspiration_popup_comment_count').text(inspiration.CommentCount);
+$('#inspiration_popup_view_count').text(parseInt(inspiration.ViewedCount) + 1);
+$('#inspiration_popup_fav').text(inspiration.FavoritedCount);
+commentObj.getComments(commentObj.INSPIRATION, inspiration.EncId, 'inspiration_popup_comments');
+*/
+$('#inspiration_popup_fav').data('subjectid', inspiration.EncId);
+var favClass = 'fav_' + inspiration.EncId;
+favClass = favClass.substring(0, favClass.length - 1);
+$('#inspiration_popup_fav').addClass(favClass);
+inspirationObj.markFavorited();
+
+$('.favorite').unbind('click').click(function() {
+    inspirationObj.handleFavoriting($(this));
+});
+$('.favorited').unbind('click').click(function() {
+    inspirationObj.handleUnfavoriting($(this));
+});
+$('#inspiration_popup_fb_share').unbind("click").click(function() {
+    trackObj.count("action", configObj.CUR_PAGE, "share", "insp_pop", "click");
+    var pictureUrl = configObj.INSPIRATIONS_URL + "/" + inspiration.ImageName;
+    var feedDescription = "I was going through the inspiration board at Jools, and found this incredible jewellery design! Check out more such designs at www.jools.in, or share your own designs and make some cash!";
+    var feedTitle = "Look what I found on Jools!";
+    FB.ui({
+            method: 'feed',
+            link: configObj.BASE_URL + "/inspiration/hotTrends?id=" + inspiration.EncId,
+            picture: pictureUrl,
+            description: feedDescription,
+            name: feedTitle,
+        }, function(response){
+            if(response == null) {
+                trackObj.count("action", configObj.CUR_PAGE, "share", "insp_pop", "abort");
+                    return;
+                }
+                trackObj.count("action", configObj.CUR_PAGE, "share", "insp_pop", "success");
+        });
+});
+$('#inspiration_popup_pin_share').unbind('click').click(function() {
+    trackObj.count("action", configObj.CUR_PAGE, "pin", "inspiration", "click");
+    var pictureUrl = configObj.STATIC_URL  + "/images/inspirations/" + inspiration.ImageName;
+    var url = encodeURIComponent(configObj.BASE_URL);
+    var description = "Check out this amazing piece of jewellery on www.jools.in"
+    var buttonUrl = "https://www.pinterest.com/pin/create/button/?url=" + url
+        + "&media=" + encodeURIComponent(pictureUrl) 
+        + "&description=" + encodeURIComponent(description);
+    window.open(buttonUrl, "Share on Pinterest", "height=500,width=900");
+});
+
+/*$('#ins_popup_request_quote').unbind('click').click(function() {
+   $(this).hide();
+   $('#ins_popup_quote_requested').show();
+   trackObj.count("action", configObj.CUR_PAGE, "jool", inspiration.EncId, "request_quote");
+});*/
+utilObj.bindLinks();
+</script>

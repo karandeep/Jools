@@ -1,0 +1,32 @@
+<div style="text-align: center;">
+    <div style="margin-bottom: 10px; margin-top: 10px;">
+        <img src="{{.Config.STATIC_URL}}/images/logo_v2.png" alt="Jools" height="70">
+    </div>
+    <div onclick="tryFBLogin('signup_popup');" style="cursor: pointer;">
+        <img src="{{.Config.STATIC_URL}}/images/icons/fb_signup.png" alt="Sign Up with Facebook">
+    </div>
+    <div style="font-size: 16px; margin: 20px 0;">
+        --------- or sign up with ---------
+    </div>
+    <div style="margin-bottom: 10px;">
+        <form id="signup_form" action="{{.Config.BASE_URL}}/user/create" method="post">
+        Email: <input type="email" name="login_email" id="signup_login_email" 
+                      style='width: 260px;'
+                      placeholder="Enter your email address">
+        </form>
+    </div>
+    <button id="signup_submit_email" class="light_pink_button">Sign Up</button>
+</div>
+<script type="text/javascript">
+    $('#signup_submit_email').click(function(e) {
+        e.preventDefault();
+        var email = $('#signup_login_email').val();
+        if (email == '') {
+            return;
+        }
+        trackObj.count("action", "prem", "signup_intent", "signup_popup", "submit_email", email);
+        trackObj.count("action", "prem", "sign_up", "signup_popup", "submit_email", email);
+        userObj.submitEmail(email);
+    });
+    utilObj.styleInputsAndButtons();
+</script>

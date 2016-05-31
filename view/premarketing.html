@@ -1,0 +1,571 @@
+<link rel="stylesheet" href="{{.Config.STATIC_URL}}/js/libs/nivoslider/nivo-slider.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="{{.Config.STATIC_URL}}/js/libs/nivoslider/themes/default/default.css" type="text/css" media="screen" />
+<div class="slider-outer-wrapper">
+    <div class="slider-wrapper theme-default">
+        <div id="slider" class="nivoSlider">
+        </div>
+    </div>
+</div>
+<div>
+    <div class="logo_area">
+        <img src="{{.Config.STATIC_URL}}/images/logo_v2.png" alt="Jools" height="70">
+    </div>
+    <div class="intro_text">
+        <!--span class="header_menu_item lets_play hide">
+            Win a diamond pendant
+        </span>
+        <span class="header_menu_item play_hotornot play_hot_link">
+            Play Hot or Not
+        </span-->
+        <span class="header_menu_item cash_credits_link get_cash_credits_link">
+            Get cash credits
+        </span>
+        <span class="header_menu_item link_to_inspiration_board">
+            Inspiration board
+        </span>
+    </div>
+
+    <div id='launching_soon_section'>
+        <div class="goudy_heading">
+            <span style="font-size: 85px; position:relative; top: 10px;">J</span>ewellery sales launching soon
+        </div>
+        <div style="text-transform: uppercase; font-size: 17px; letter-spacing: 2px;">
+            Here's a couple of things to do while we countdown to launch
+        </div>
+        <div class="premarketing_section" style="margin-left: 40px; margin-right: 20px;">
+            <div class="win_diamond_pendant experiment jools_exp_premarketing_v1_0">
+                Get cash credits
+            </div>
+            <div class="win_diamond_pendant experiment jools_exp_premarketing_v1_1">
+                Make your purchase free
+            </div>
+            <div class="win_diamond_pendant experiment jools_exp_premarketing_v1_2">
+                Make your friends' day
+            </div>
+            <div class="priority_access_msg experiment jools_exp_premarketing_v1_0">
+                <div style="margin-bottom: 15px; padding: 0 20px;">
+                    Get early access by inviting at least 3 friends.
+                </div>
+                <div>
+                    Plus, earn up to <span class="WebRupee">Rs.</span> 5000 in redeemable cash credits.
+                </div>
+            </div>
+            <div class="priority_access_msg experiment jools_exp_premarketing_v1_1">
+                <div style="margin-bottom: 15px; padding: 0 20px;">
+                    Claim your <span class="WebRupee">Rs.</span> 5000 cash for your first purchase by inviting friends.
+                </div>
+            </div>
+            <div class="priority_access_msg experiment jools_exp_premarketing_v1_2">
+                <div style="margin-bottom: 15px; padding: 0 20px;">
+                    Send your friends <span class="WebRupee">Rs.</span> 500, make them happy.
+                </div>
+                <div>
+                    Also earn up to <span class="WebRupee">Rs.</span> 5000 in redeemable cash credits.
+                </div>
+            </div>
+            <button class="know_more_credits_link light_pink_button">
+                Know More
+            </button>
+        </div>
+        <div class="premarketing_section">
+            <div class="contest contest_price_guess_0">
+                <div class="win_diamond_pendant">
+                    Win a diamond pendant!
+                </div>
+                <div style="position: relative; left: 50px;">
+                    <img src="{{.Config.STATIC_URL}}/images/pendant_v2.png" height="185" alt="Pendant">
+                </div>
+                <button id="lets_play" class="light_pink_button">
+                    Let's Play!
+                </button>
+            </div>
+            <div>
+                <div class="contest contest_price_guess_1">
+                    <div class="win_diamond_pendant">
+                        Win a diamond pendant!
+                    </div>
+                    <div class="contest_status_msg">
+                        <div style="position: absolute; top: 4px;">
+                            <img src="{{.Config.STATIC_URL}}/images/pendant_v2.png" height="140" alt="Pendant">
+                        </div>
+                        <div style='padding-left: 90px; position:relative;'>
+                            <div class='bold'>
+                                You're almost there!
+                            </div>
+                            <div style="font-size: 14px; margin-top: 5px; margin-bottom: 5px; line-height: 20px;">
+                                We've received your quote.
+                                <div>
+                                    Get 3 friends to play this game and qualify for the contest!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button id="invite_friends_link" class="light_pink_button">
+                        Invite Friends
+                    </button>
+                </div>
+            </div>
+            <div class="contest contest_price_guess_2">
+                <div class="win_diamond_pendant">
+                    Win a diamond pendant!
+                </div>
+                <div class="contest_status_msg">
+                    <div style="position: absolute; top: 4px;">
+                        <img src="{{.Config.STATIC_URL}}/images/pendant_v2.png" height="140" alt="Pendant">
+                    </div>
+                    <div style='padding-left: 90px; position: relative;'>
+                        <div class='bold'>
+                            You've qualified!
+                        </div>
+                        <div style="font-size: 16px; margin-top: 30px;">
+                            Winners will be announced on 31st March, 2014.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="text-transform: uppercase; width: 500px; margin: auto;">
+            <div class="left" style="margin-right: 10px;">
+            Stay tuned for updates
+            </div>
+            <div class="fb-like left" 
+                 style="margin-right: 10px; width: 50px; overflow: hidden;"
+                 data-href="{{.Config.FB_PAGE}}" data-layout="button" 
+                 data-action="like" data-show-faces="false" data-share="false"></div>
+            <div class="left">
+                <a href="{{.Config.TWTR_PAGE}}" class="twitter-follow-button" data-show-count="false" data-lang="en">
+                    Follow
+                </a>
+            </div>
+        </div>
+    </div>
+    <div style="background: white; color: black; text-align: center;">
+        <div id="guessing_contest" class="contest contest_price_guess_0">
+            <div id="win_prize" class='goudy_heading' style='text-shadow: none; color:black; font-size:62px;'>
+                Win this diamond pendant!
+            </div>
+            <div style="width: 900px; margin: auto; text-align: left; margin-bottom: 50px;">
+                <div class='left' style='margin-top:30px; height: 400px;'>
+                    <img src='{{.Config.STATIC_URL}}/images/pendant_v2.png' alt=''
+                         height='300'>
+                </div>
+                <div style='position:relative; z-index: 1;'>
+                    <div style="font-size: 30px; letter-spacing: 3px; margin-bottom: 20px; padding-top: 40px;">
+                        Guess the price to make it yours.
+                    </div>
+                    <div style="font-size: 20px; letter-spacing: 2px;">
+                        Our introductory infinity pendant
+                    </div>
+                    <div style="font-size: 16px; letter-spacing: 2px;">
+                        with diamonds studded in 14 carat yellow gold.
+                    </div>
+                    <div style='margin-top: 74px; margin-left: 380px;'>
+                        <input id="guessed_pendant_price" type="text" 
+                               style="width:90px; height: 18px; font-size: 14px; margin-right: 40px; margin-bottom: 60px;"
+                               placeholder='Price?'>
+                        <button id="submit_pendant_price" 
+                                class="light_blue_button" style='width: 130px; position:relative; top: -31px;'>
+                            Submit
+                        </button>
+                    </div>
+                    <div style="font-size: 16px; letter-spacing: 2px; margin-bottom: 10px;">
+                        Results will be announced on 31st March, 2014.
+                    </div>
+                </div>
+                <div style='position: relative; top: -174px; left: -19px;z-index: 0;'>
+                    <img src='{{.Config.STATIC_URL}}/images/price_tag.png' alt=''>
+                </div>
+            </div>
+        </div>
+        <div id="eye_for_beauty">
+            <div class="goudy_shadowless">
+                Do you have an eye for beautiful things?
+            </div>
+            <div class="goudy_text" style="font-size: 35px;">
+                Play a round of
+                <span class="goudy_shadowless">Hot or Not</span>
+                & test your style quotient
+            </div>
+        </div>
+        <div style="background: rgba(139,210,206,0.3);">
+            <div id="hot_or_not_header">
+                <div class="goudy_shadowless" style="margin-bottom: 0;">
+                    Which one do you like?
+                </div>
+            </div>
+            <div id="hot_progress_bar_bg">
+                <div id="hot_progress_bar_text"></div>
+                <div id="hot_progress_bar">
+                </div>
+            </div>
+            <div id="hot_or_not">
+                <div id="hot_left" class="hot_img_wrapper">
+                    <div id='hot_img_left'>
+                    </div>
+                    <div class="hot_hover_text goudy_shadowless">
+                        <div style="margin-top: 150px;">
+                            HOT!
+                        </div>
+                        <div class="goudy_text" style="font-size: 25px;">
+                            Click to vote for this jool
+                        </div>
+                    </div>
+                </div>
+                <div id="hot_right" class="hot_img_wrapper">
+                    <div id='hot_img_right'>
+                    </div>
+                    <div class="hot_hover_text goudy_shadowless">
+                        <div style="margin-top: 150px;">
+                            HOT!
+                        </div>
+                        <div class="goudy_text" style="font-size: 25px;">
+                            Click to vote for this jool
+                        </div>
+                    </div>
+                </div>
+                <div id="rating_game_share">
+                    <div class="goudy_heading" style='margin-top: 80px;'>
+                        Congrats
+                    </div>
+                    <div class="goudy_text" style="font-size: 35px;text-shadow: 2px 2px 2px #000;margin-bottom: 60px;">
+                        You have just won a mystery gift!
+                        <div>
+                            Share this page on Facebook to find out what's inside.
+                        </div>
+                    </div>
+                    <img src="{{.Config.STATIC_URL}}/images/icons/share_facebook_v1.png"
+                         class="fb_mystery_gift" data-picture="mystery_gift.jpg"
+                         data-title="I just got a mystery box from Jools!"
+                         data-description="What could be inside it? Glittering Gold? Sparkling Silver? Dazzling Diamonds?
+                         There's only one way to find out - Play Hot or Not on Jools & get your own mystery box!">
+                </div>
+                <div class="rating_prize">
+                    <div class="goudy_heading" style='margin-top: 20px;'>
+                        It's a fortune cookie!
+                    </div>
+                    <div style="color: #333; border: 1px solid #333; width: 90%; height: 100px; margin: auto;">
+                        <div style="font-size: 45px; margin-top: 20px;">
+                            "It may be those who do most, dream most"
+                        </div>
+                    </div>
+                    <div class="goudy_text" style="font-size: 30px; margin-bottom: 10px; margin-top:30px;">
+                        Keep playing to unwrap more fun things!
+                    </div>
+                    <button id="keep_playing" class='light_blue_button'>Play Hot or Not</button>
+                </div>
+            </div>
+            <div id="hot_versus" class="goudy_shadowless">
+                Vs
+            </div>
+            <div id="next_hot_set">
+                <div class='tiny_bottom_margin'>Don't like either?</div>
+                <button id="get_next_pair" class='light_blue_button'>Skip</button>
+            </div>
+            <div id="hot_or_not_footer" class="goudy_shadowless">
+                Top rated Jools. 
+                <a href="mailto:team@jools.in" style="color: white;"
+                   title="Send us your designs if you would like them to get featured here">
+                    Want to get featured?
+                </a>
+                <div id='top_rated_images'>
+                </div>
+                <div style="font-size: 35px;">
+                    Keep playing to win exciting discounts when we launch!
+                </div>
+            </div>
+        </div>
+        <div style="background: rgba(139,210,206,0.3); color: #333; padding-bottom: 100px;">
+            <div id="get_cash_credits" class="goudy_text">
+                Get Cash Credits
+            </div>
+            <div style="font-size: 20px;letter-spacing: 4px;line-height: 25px;margin-bottom: 40px;">
+                Invite friends to Jools, and you can all win up to <span class="WebRupee">Rs.</span> 5000!
+                <div style="margin-top: 10px;">
+                    Here's how it works:
+                </div>
+            </div>
+            <div style="width: 650px; margin: auto; height: 220px;">
+                <div class='outside_circle'>
+                    <div class='blue_circle'></div>
+                    <div class='inside_circle'>
+                        <div class='inner_circle_heading'>
+                        1
+                        </div>
+                        <div class='inner_circle_text'>
+                            Invite a friend to Jools
+                        </div>
+                    </div>
+                </div>
+                <div class='outside_circle'>
+                    <div class='blue_circle'></div>
+                    <div class='inside_circle'>
+                        <div class='inner_circle_heading'>
+                        2
+                        </div>
+                        <div class='inner_circle_text'>
+                            Your friend signs up
+                        </div>
+                    </div>
+                </div>
+                <div class='outside_circle' style='margin-right: 0;'>
+                    <div class='blue_circle'></div>
+                    <div class='inside_circle'>
+                        <div class='inner_circle_heading'>
+                        3
+                        </div>
+                        <div class='inner_circle_text'>
+                            You both get cash credits
+                        </div>
+                    </div>
+                </div>
+            </div> 
+            <div id='send_invites_section'>
+                <div id="invite_friends" class="goudy_text">
+                    Invite friends now!
+                </div>
+                <div style="margin-top: 20px; margin-bottom: 40px; text-align: center; font-size: 20px;">
+                    Simply click one of the buttons below to select friends to invite.
+                </div>
+                <div style="text-align: center;">
+                    <img src="{{.Config.STATIC_URL}}/images/icons/facebook_invite.png" 
+                         class="fb_invite_friends" style="margin-right: 20px;">
+                    <img src="{{.Config.STATIC_URL}}/images/icons/gmail_invite.png" 
+                         class="gmail_invite_friends" style="margin-right: 20px;">
+                    <img src="{{.Config.STATIC_URL}}/images/icons/yahoo_invite.png" 
+                         class="yahoo_invite_friends">
+                </div>
+                <!--div id="send_invites_email">
+                    <div id='invite_by_email'>
+                        <div class="small_bottom_margin" style="letter-spacing: 2px; font-weight: bold;">
+                            Invite contacts by email
+                        </div>
+                        <div class='small_text small_bottom_margin'>
+                            Add friends’ email addresses separated by commas
+                        </div>
+                        <div id='email_send_autocomplete' class="ui-widget">
+                            <div class="small_bottom_margin" style='font-size: 14px;'>
+                                <input id="email_list_for_referral" type="text"
+                                       placeholder='Type email addresses separated by commas'
+                                       style='width:400px; height: 23px;'>
+                            </div>
+                            <button id='send_email' class="light_pink_button">Send Invitations</button>
+                            <div id='email_status_message' class="small_text"></div>
+                        </div>
+                    </div>
+                    <div id="invite_by_link">
+                        <div class="small_bottom_margin" style="letter-spacing: 2px; font-weight: bold;">
+                            Your special invite link
+                        </div>
+                        <div class="small_text small_bottom_margin">
+                            Simply click on the buttons below to share this link
+                        </div>
+                        <div id="referral_link_wrapper" style="margin-bottom: 15px; font-size: 14px;">
+                            <input id="referral_link" type='text' 
+                                   value="{{.Data.referralLink}}" disabled='disabled' 
+                                   style='width:400px; height: 23px;'>
+                        </div>
+                        <div id="sharing_options">
+                            <!--div class="fb-send left" style="margin-right: 5px;"
+                                 data-href="{{.Data.referralLink}}"></div-->
+                            <!--div class="left fb-share-button" style="width:60px; margin-right: 5px;"
+                                 data-href="{{.Data.referralLink}}" data-type="button"></div>
+                            <div class="left">
+                                <img src="{{.Config.STATIC_URL}}/images/icons/share_facebook_v1.png" 
+                                     class="fb_share_button" data-href="{{.Data.referralLink}}">
+                            </div>
+                            <div class="left" style="margin-left: 30px;">
+                                <img src="{{.Config.STATIC_URL}}/images/icons/share_twitter_v1.png"
+                                     class="twtr_share_button"  
+                                     data-url="{{.Data.referralLink}}" 
+                                     data-text="Sign up for jools using this link" 
+                                     data-via="joolsandyou">
+                            </div>
+                            <!--script type="IN/Share" data-url="{{.Data.referralLink}}"></script>
+                        </div> 
+                        <button class="fb_invite_friends light_pink_button">Invite Friends</button>
+                        <button class="gmail_invite_friends light_pink_button">
+                            Import Gmail Contacts
+                        </button>
+                        <div>
+                        <button class="yahoo_invite_friends light_pink_button">
+                            Import Contacts Yahoo
+                        </button>
+                        </div>
+                    </div>
+                </div-->
+            </div>
+            <div style='width: 750px; margin: auto; margin-top: 50px;'>
+                <div class="referral_count_info">
+                    <span class='referral_count'>0</span> friends have joined using your invite link
+                </div>
+                <div class="access_levels_progress_bg">
+                    <div class="access_levels_progress">       
+                    </div>
+                </div>
+                <div class="access_level_indicators">     
+                    <div class="access_level_arrow">    
+                    </div>
+                    <div class="access_level_arrow">    
+                    </div>
+                    <div class="access_level_arrow">    
+                    </div>
+                    <div class="access_level_arrow">    
+                    </div>
+                    <div class="access_level_arrow">    
+                    </div>
+                </div>
+                <div style='height: 30px;'>
+                    <div class='left' style="margin-right: 50px;">
+                        Credits earned
+                    </div>
+                    <div class='left credit_earned'>
+                        <span class="WebRupee">Rs.</span> 500
+                    </div>
+                    <div class='left credit_earned'>
+                        <span class="WebRupee">Rs.</span> 1000
+                    </div>
+                    <div class='left credit_earned'>
+                        <span class="WebRupee">Rs.</span> 1500
+                    </div>
+                    <div class='left credit_earned'>
+                        <span class="WebRupee">Rs.</span> 2500
+                    </div>
+                    <div class='left credit_earned'>
+                        <span class="WebRupee">Rs.</span> 5000
+                    </div>
+                </div>
+                <div style='height: 30px; margin-bottom: 20px;'>
+                    <div class='left' style="margin-right: 50px;">
+                        Friends joining
+                    </div>
+                    <div class='left friends_joined'>
+                        <span style="position: relative; top: -3px;left:4px;">0</span> 
+                        <img src="{{.Config.STATIC_URL}}/images/icons/friend.png" height="18">
+                    </div>
+                    <div class='left friends_joined'>
+                        <span style="position: relative; top: -3px;left:4px;">3</span>
+                        <img src="{{.Config.STATIC_URL}}/images/icons/friend.png" height="18">
+                    </div>
+                    <div class='left friends_joined'>
+                        <span style="position: relative; top: -3px;left:4px;">5</span>
+                        <img src="{{.Config.STATIC_URL}}/images/icons/friend.png" height="18">
+                    </div>
+                    <div class='left friends_joined'>
+                        <span style="position: relative; top: -3px;left:4px;">10</span>
+                        <img src="{{.Config.STATIC_URL}}/images/icons/friend.png" height="18">
+                    </div>
+                    <div class='left friends_joined'>
+                        <span style="position: relative; top: -3px;left:4px;">20</span>
+                        <img src="{{.Config.STATIC_URL}}/images/icons/friend.png" height="18">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    function popupClosed(network) {
+        //window.location.reload();
+	window.location = "{{.Config.BASE_URL}}/premarketing?importedContacts=" + network;
+    }
+    function windowOpener(url, target, params) {
+        window.open(url, target, params);
+    }
+    window.onload = function() {
+        if($('#guessing_contest').is(":visible")) {
+            $('.lets_play').show();
+        }
+        $('.lets_play').click(function() {
+            var offset = 0;
+            offset = $('#guessing_contest').offset();
+            $(window).scrollTop(offset.top);
+            trackObj.count("action", "hp", "play", "", "", expObj.getBucket("premarketing_v1"));
+        });
+        $('.play_hotornot').click(function(e) {
+            e.preventDefault();
+            $(window).scrollTop( $('#eye_for_beauty').offset().top );
+            trackObj.count("action", "hp", "play_hot", "", "", expObj.getBucket("premarketing_v1"));
+        });
+        $('.cash_credits_link').click(function(e) {
+            e.preventDefault();
+            $(window).scrollTop( $('#get_cash_credits').offset().top - 100);
+            trackObj.count("action", "hp", "cash_credits", "", "", expObj.getBucket("premarketing_v1"));
+        });
+        
+        var referralCount = userObj.getReferralCount();
+        $('.referral_count').text(referralCount);
+	var pWidth = inviteTierObj.getProgressBarWidth(referralCount);
+        $('.access_levels_progress').attr("style", "width: " + pWidth + "%;");
+
+        $('#submit_pendant_price').click(function() {
+            contestObj.submitPrice();
+            $(window).scrollTop(0);
+            trackObj.count("action", "hp", "quote","submit","", expObj.getBucket("premarketing_v1"));
+        });
+        $('#send_email').click(function() {
+            var emailList = $('#email_list_for_referral').val();
+            sendEmail('email', emailList);
+        });
+        $('#request_invite_button').click(function() {
+            var email = $('#login_email').val();
+            if (email == '') {
+                //$('.error_message').text('Please enter a valid email address');
+                //$('.error_message_wrapper').show();
+                return;
+            }
+            $('#request_access_form').submit();
+        });
+        
+        $('.know_more_credits_link').click(function(){
+            $(window).scrollTop( $('#get_cash_credits').offset().top - 100);
+            trackObj.count("action", "hp", "know_more", "", "", expObj.getBucket("premarketing_v1"));
+        });
+        $('.prem_cash_credits_link').click(function(){
+            $(window).scrollTop( $('#get_cash_credits').offset().top - 100);
+            trackObj.count("action", "hp", "get_cash_credits", "", "", expObj.getBucket("premarketing_v1"));
+        });
+        $('#lets_play').click(function() {
+            $(window).scrollTop($('#guessing_contest').offset().top);
+            trackObj.count("action", "hp", "play", "", "", expObj.getBucket("premarketing_v1"));
+        });
+        $('#invite_friends_link').click(function() {
+            $(window).scrollTop($('#get_cash_credits').offset().top - 100);
+            trackObj.count("action", "hp", "invite_friends", "button", "", expObj.getBucket("premarketing_v1"));
+        });
+        $('#hot_left').mouseover(function () {
+            $("#hot_left > .hot_hover_text").show();
+        }).mouseout(function () {
+            $('#hot_left > .hot_hover_text').hide();
+        });
+        $('#hot_right').mouseover(function () {
+            $("#hot_right > .hot_hover_text").show();
+        }).mouseout(function () {
+            $('#hot_right > .hot_hover_text').hide();
+        });
+        $('#keep_playing').click(function() {
+            $('.rating_prize').fadeOut();
+        });
+        $('#slider').html(
+            '<img src="{{.Config.STATIC_URL}}/images/premarketing_bg_0.jpg" alt="" >' +
+            '<img src="{{.Config.STATIC_URL}}/images/premarketing_bg_1.jpg" alt="" >' +
+            '<img src="{{.Config.STATIC_URL}}/images/premarketing_bg_2.jpg" alt="" >'
+        );
+        $('#slider').nivoSlider({
+            effect: 'fade',
+            slices: 1,
+            boxCols: 8,
+            boxRows: 4,
+            animSpeed: 500,
+            pauseTime: 5000,
+            startSlide: 0,
+            directionNav: true,
+            controlNav: true,
+            controlNavThumbs: false,
+            pauseOnHover: true,
+            manualAdvance: false,
+            prevText: 'Prev',
+            nextText: 'Next',
+            randomStart: false
+        });
+    };
+</script>

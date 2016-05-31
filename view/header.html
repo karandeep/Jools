@@ -1,0 +1,227 @@
+<div id="top_header_wrapper">
+    <div id="top_header">
+        <a href="{{.Config.BASE_URL}}/?utm_source=logo" class="home_link">
+            <img src="{{.Config.STATIC_URL}}/images/icons/logo_white.png" alt="Jools" 
+                 height="50"
+                 class="logo_left left" style="margin-top: 2px; margin-left: 5px;">
+        </a>
+        <div class="right">
+            <a href="{{.Config.BASE_URL}}/product/shop?utm_source=top_bar" class="shop_link" data-src="top_bar">
+                <div class="top_header_link shop">
+                    Shop
+                    <div class="nav_bar_link_details">
+                        <img src="{{.Config.STATIC_URL}}/images/dropdown_shop.jpg" alt="">
+                        <div class="nav_bar_heading">
+                            Exclusive preview
+                        </div>
+                        <div class="nav_bar_text">
+                            Experience the magic of customization
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <div class="top_header_link">
+                Explore
+                <div class="nav_bar_link_details">
+                    <a href="{{.Config.BASE_URL}}/inspiration/hotTrends?utm_source=top_bar" class="hot_trends_link" data-src="top_bar">
+                        <img src="{{.Config.STATIC_URL}}/images/dropdown_explore.jpg" alt="">
+                        <div class="nav_bar_heading">
+                            Browse Trends
+                        </div>
+                        <div class="nav_bar_text">
+                            Discover the hottest jewellery trends
+                        </div>
+                    </a>
+                    <a href="{{.Config.BASE_URL}}/inspiration/playHot?utm_source=top_bar" class="play_hot_link" data-src="top_bar">
+                        <img src="{{.Config.STATIC_URL}}/images/dropdown_hotornot.jpg" alt="">
+                        <div class="nav_bar_heading">
+                            Play hot or not
+                        </div>
+                        <div class="nav_bar_text">
+                            Play and win mystery gifts!
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <a href="{{.Config.BASE_URL}}/contest/winPendant?utm_source=top_bar" class="win_pendant_link" data-src="top_bar">
+                <div class="top_header_link win_pendant">
+                    Win a pendant
+                    <div class="nav_bar_link_details">
+                        <img src="{{.Config.STATIC_URL}}/images/dropdown_winpendant.jpg" alt="">
+                        <div class="nav_bar_heading">
+                            Win a pendant!
+                        </div>
+                        <div class="nav_bar_text">
+                            Guess the price & enter the contest!
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <div class="top_header_link not_logged_in">
+                <span class="sign_in">Sign In</span>
+                |
+                <span class="sign_up">Sign Up</span>
+            </div>
+            <div class="top_header_link logged_in">
+                <a href="{{.Config.BASE_URL}}/user/earnCash?utm_source=top_bar">
+                    <img src="{{.Config.STATIC_URL}}/images/icons/user.png" alt=""
+                         style="float: left; padding-top: 16px; margin-right: 3px;">
+                    <span style="max-width: 200px; overflow: hidden;">
+                        {{.UserName}}
+                    </span>
+                </a>
+                <a href="{{.Config.BASE_URL}}/user/logout?utm_source=top_bar">
+                    <div class="nav_bar_link_details" style="width: 200px; height: 60px; left: 0;">
+                        <div class="nav_bar_heading">
+                            Logout
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <a href="{{.Config.BASE_URL}}/user/earnCash?utm_source=top_bar" class="earn_cash_link" data-src="top_bar">
+                <div class="top_header_link earn_cash">
+                    Earn cash credits
+                    <div class="access_levels_progress_bg logged_in" 
+                         style="width: 160px; position: relative; top: -13px; height: 8px;background: white;">
+                        <div class="access_levels_progress" style="height: 8px;">       
+                        </div>
+                    </div>
+                    <div class="nav_bar_link_details" style="left: -220px;">
+                        <img src="{{.Config.STATIC_URL}}/images/dropdown_getcredits.jpg" alt="">
+                        <div class="nav_bar_heading">
+                            Claim your cash credits
+                        </div>
+                        <div class="nav_bar_text">
+                            Earn up to <span class="WebRupee">Rs.</span><span class="lucida_text">5000</span> in cash credits.
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+<div id="promo_banner_wrapper">
+    <div class="promo_banner not_logged_in">
+        <div style="padding-top: 20px; margin-left: 10px; float: left;">
+            <div class="lucida_text"
+                 style="background: #FA999F; text-transform: uppercase; width: 133px; padding-left: 5px; margin-bottom: 3px;color: white;">
+                Introducing
+            </div>
+            <div style="font-size: 30px; margin-bottom: 5px;" class="goudy_text">
+                The magic of customized jewellery.
+            </div>
+            <div style="font-size: 20px; font-style: italic;" class="goudy_text">
+                At special members-only discounts.
+            </div>
+        </div>
+        <div style="float: right; margin-top: 50px; margin-right: 10px;">
+            <div class="fb_login left" onclick="tryFBLogin('promo_banner');"
+                 style="margin-right: 20px;">
+                <img src="{{.Config.STATIC_URL}}/images/icons/fb_login.png" alt="Login with Facebook">
+            </div>
+            <div class="left">
+                <img class="login clickable" alt="Login with email" 
+                     src="{{.Config.STATIC_URL}}/images/icons/email_login.png">
+            </div>
+        </div>
+    </div>
+    <div class="promo_banner logged_in">
+        <div style="padding-top: 20px; margin-left: 10px; float: left;">
+            <div class="lucida_text"
+                 style="background: #FA999F; text-transform: uppercase; width: 144px; padding-left: 5px; margin-bottom: 3px; color: white;">
+                Limited offer
+            </div>
+            <div style="font-size: 28px; margin-bottom: 5px;" class="goudy_text">
+                Invite friends. You get <span class="lucida_text"><span class="WebRupee">Rs.</span>500</span>. They get <span class="lucida_text"><span class="WebRupee">Rs.</span>500</span>.
+            </div>
+            <div style="font-size: 20px; font-style: italic;" class="goudy_text">
+                Claim up to <span class="lucida_text"><span class="WebRupee">Rs.</span>5000</span> in cash credits!
+            </div>
+        </div>
+        <div style="float: right; margin-top: 34px;">
+            <div class="goudy_text left" style="font-size: 28px;padding-top:10px;">Invite Now &#187;</div>
+            <div style="text-align: center; display: inline-block;">
+                <div style="width: 65px;" class="left">
+                    <img src="{{.Config.STATIC_URL}}/images/icons/fb_invite_small.png" 
+                         class="fb_invite_friends" data-src="promo_banner">
+                    <span style="font-size:13px;">facebook</span>
+                </div>
+                <div style="width: 65px;" class="left">
+                    <img src="{{.Config.STATIC_URL}}/images/icons/gmail_invite_small.png" 
+                         class="gmail_invite_friends" data-src="promo_banner">
+                    <span style="font-size:13px;">Gmail</span>
+                </div>
+                <div style="width: 65px;" class="left">
+                    <img src="{{.Config.STATIC_URL}}/images/icons/yahoo_invite_small.png" 
+                         class="yahoo_invite_friends" data-src="promo_banner">
+                    <span style="font-size:13px;">Yahoo!</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="nav_bar_wrapper">
+    <div id="nav_bar">
+        <a href="{{.Config.BASE_URL}}/product/shop?utm_source=nav_bar" class="shop_link" data-src="nav_bar">
+            <div class="nav_bar_link shop">
+                Shop
+                <div class="nav_bar_link_details">
+                    <img src="{{.Config.STATIC_URL}}/images/dropdown_shop.jpg" alt="">
+                    <div class="nav_bar_heading">
+                        Exclusive preview
+                    </div>
+                    <div class="nav_bar_text">
+                        Experience the magic of customization
+                    </div>
+                </div>
+            </div>
+        </a>
+        <a href="{{.Config.BASE_URL}}/inspiration/hotTrends?utm_source=nav_bar" class="hot_trends_link" data-src="nav_bar">
+            <div class="nav_bar_link hot_trends" style="margin-left: 10px;">
+                Browse trends
+                <div class="nav_bar_link_details">
+                    <img src="{{.Config.STATIC_URL}}/images/dropdown_explore.jpg" alt="">
+                    <div class="nav_bar_text">
+                        Discover the hottest jewellery trends
+                    </div>
+                </div>
+            </div>
+        </a>
+        <a href="{{.Config.BASE_URL}}/inspiration/playHot?utm_source=nav_bar" class="play_hot_link" data-src="nav_bar">
+            <div class="nav_bar_link play_hot">
+                Play Hot or Not
+                <div class="nav_bar_link_details">
+                    <img src="{{.Config.STATIC_URL}}/images/dropdown_hotornot.jpg" alt="">
+                    <div class="nav_bar_text">
+                        Play and win mystery gifts!
+                    </div>
+                </div>
+            </div>
+        </a>
+        <a href="{{.Config.BASE_URL}}/contest/winPendant?utm_source=nav_bar" class="win_pendant_link" data-src="nav_bar">
+            <div class="nav_bar_link win_pendant">
+                Win a pendant
+                <div class="nav_bar_link_details">
+                    <img src="{{.Config.STATIC_URL}}/images/dropdown_winpendant.jpg" alt="">
+                    <div class="nav_bar_text">
+                        Guess the price & enter the contest!
+                    </div>
+                </div>
+            </div>
+        </a>
+        <a href="{{.Config.BASE_URL}}/user/earnCash?utm_source=nav_bar" class="earn_cash_link" data-src="nav_bar">
+            <div class="nav_bar_link earn_cash">
+                Earn cash
+                <div class="nav_bar_link_details" style="left: -180px;">
+                    <img src="{{.Config.STATIC_URL}}/images/dropdown_getcredits.jpg" alt="">
+                    <div class="nav_bar_heading">
+                        Claim your cash credits
+                    </div>
+                    <div class="nav_bar_text">
+                        Earn up to <span class="WebRupee">Rs.</span><span class="lucida_text">5000</span> in cash credits.
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>

@@ -1,0 +1,284 @@
+<div class="cart">
+    <div class="cart_item_count"></div>
+</div>
+<div>
+    <span class="like_link shop_link">shop | </span>
+    <span class="like_link">rings</span>
+</div>
+<div style="min-height: 900px; padding-top: 40px;">
+    <div class="left relative" style="width: 400px; margin-bottom: 40px;">
+        <div class="product_name lucida_text">
+        </div>
+        <div class="cantarell_text" style="font-size: 16px; color: #B8B8B8;">
+            Item Code: <span class="product_code"></span>
+            <span class="like_link cantarell_text product_details_link" 
+                 style="margin-left: 15px; line-height: 23px;">
+                Details
+            </span>
+        </div>
+        <img class="product_image clickable" src="" 
+             alt="" width="400" height="400">
+        <div class="zoomed_product"></div>
+        <div class="goudy_text" style="text-align: center; margin-bottom: 10px;">
+            <img src="{{.Config.STATIC_URL}}/images/icons/search_v1.png"
+                 alt="" height="20" style="position: relative; top: 3px;"> 
+            mouseover to zoom
+        </div>
+        <div class="product_thumbnails">
+        </div>
+    </div>
+    <div class="right relative" style="width: 560px;">
+        <div class="goudy_text customize_heading">
+            Customize this jool to suit your style.
+        </div>
+        <div class="cantarell_text center" style="font-size: 16px; color: #7A7A7A; height: 60px;">
+            <span class="product_desc"></span>
+            <span class="like_link cantarell_text product_details_link" 
+                  style="margin-left: 10px; line-height: 23px;">
+                Details
+            </span>
+        </div>
+        <div class="left customize_wrapper">
+            <div class="customize_info" style="margin-bottom: 24px;">
+                Start customizing here
+            </div>
+            <div class="choice_wrapper center_stone_wrapper relative">
+                <div class="choose_text">
+                    <span class="center_stone_choice_text"></span>
+                    <div class="choices_toggle center_stone_choices_toggle left_triangle">
+                    </div>
+                </div>
+                <div class="choices center_stone_choices">
+                </div>
+                <div class="diamond_selector diamond_selector_0">
+                </div>
+            </div>
+            <div class="choice_wrapper accent_stone_one_wrapper relative">
+                <div class="choose_text">
+                    <span class="accent_stone_one_choice_text"></span>
+                    <div class="choices_toggle accent_stone_one_choices_toggle left_triangle">
+                    </div>
+                </div>		
+                <div class="choices accent_stone_one_choices">
+                </div>
+                <div class="diamond_selector diamond_selector_1">
+                </div>
+            </div>
+            <div class="choice_wrapper accent_stone_two_wrapper relative">
+                <div class="choose_text">
+                    <span class="accent_stone_two_choice_text"></span>
+                    <div class="choices_toggle accent_stone_two_choices_toggle left_triangle">
+                    </div>
+                </div>
+                <div class="choices accent_stone_two_choices">
+                </div>
+                <div class="diamond_selector diamond_selector_2">
+                </div>
+            </div>
+            <div class="choice_wrapper primary_metal_wrapper relative">
+                <div class="choose_text">
+                    <span class="primary_metal_choice_text"></span>
+                    <div class="choices_toggle primary_metal_choices_toggle left_triangle">
+                    </div>
+                </div>
+                <div class="choices primary_metal_choices">
+                </div>
+            </div>
+            <div class="product_sharing_options clear" 
+                 style="padding-top: 34px; margin-bottom: 20px;">
+            </div>
+        </div>
+        <div class="right price_info_wrapper">
+            <div class="customize_info">
+                Watch the price change
+            </div>
+            <div class="product_price_wrapper left">
+                <div class="product_price"></div>
+                <div class="orig_product_price_wrap">
+                    <span class="WebRupee">Rs.</span>
+                    <span class="orig_product_price"></span>
+                </div>
+            </div>
+            <div class="product_discount_wrapper right">
+                <div class="light_pink_circle">
+                </div>
+                <div class="discount_info relative center">
+                    <span class="product_discount"></span>
+                    %
+                </div>
+                <div class="cantarell_text off_text">
+                    off
+                </div>
+            </div>
+            <div class="product_delivery_wrapper">
+                <div class="size_selector left">
+                    <div class="cantarell_text">
+                        Select size
+                    </div>
+                    <select class="size_selector_options" name="ring_size">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="3">4</option>
+                    </select>
+                </div>
+                <div class="delivery_by cantarell_text right">
+                    <div style="font-size: 12px;">Delivery</div>
+                    <div class="center" style="background: #F4F4F4;color: #7A7A7A;">
+                        <span class="delivery_month"></span>
+                        <span class="delivery_day"></span>
+                    </div>
+                </div>
+            </div>
+            <button class="light_pink_button upper add_to_cart" style="width:250px;">
+                Add to shopping bag
+            </button>
+            <div class="cantarell_text free_shipping right">
+                Free shipping. 30 day returns.
+                <div>
+                    100% authentic certified jewellery.
+                </div>
+            </div>
+            <div class="like_link center">
+                Jools Guarantee
+            </div>
+        </div>
+        <div style="position: absolute; font-size: 14px; top: 530px;">
+            <span class="upper">Got questions?</span>
+            <span>{{.Config.MOBILE_CONTACT}}</span>
+            <span style="margin-right: 10px;">
+                <a href="mailto:{{.Config.EMAIL_CONTACT}}?subject=Comments/Questions&body=Hello Folks at Jools,">
+                    <img class="left" src="{{.Config.STATIC_URL}}/images/icons/mail.png" 
+                         height="20">
+                </a>
+            </span>
+            <a href="mailto:{{.Config.EMAIL_CONTACT}}?subject=Comments/Questions&body=Hello Folks at Jools,"
+               style="color: #333333;">
+                {{.Config.EMAIL_CONTACT}}
+            </a>
+        </div>
+    </div>
+    <div class="clear product_info_heading left" style="width: 680px;">
+        <span class="product_info_heading_text selected">Product details</span>
+        <span class="product_info_heading_text">Overview</span>
+        <span class="product_info_heading_text">Detailed specifications</span>
+    </div>
+    <div class="right product_info_heading center goudy_text" style="width: 315px;">
+        <span style="font-size: 18px; line-height: 35px; color: white;">
+        What do you think of this Jool?
+        </span>
+    </div>
+    <div class="clear" id="detail_section">
+        <div class="left relative cantarell_text" style="min-height: 480px;">
+            <div class="product_detail">
+                <span class="product_detail_name">Item code:</span>
+                <span class="product_detail_value product_code"></span>
+            </div>
+            <div class="product_detail">
+                <span class="product_detail_name">Primary stone:</span>
+                <span class="product_detail_value">Round diamond</span>
+                <div class="product_subdetails">
+                    <div>
+                        <span class="product_detail_name">Quality:</span>
+                        <span class="product_detail_value">Natural AAA</span>
+                    </div>
+                    <div>
+                        <span class="product_detail_name">Gem size:</span>
+                        <span class="product_detail_value">5.00 x 5.00mm, about 0.62 carats</span>
+                    </div>
+                </div>
+            </div>
+            <div class="product_detail">
+                <span class="product_detail_name">Accent stone 1:</span>
+                <span class="product_detail_value">Round diamond</span>
+                <div class="product_subdetails">
+                    <div>
+                        <span class="product_detail_name">Quality:</span>
+                        <span class="product_detail_value">Natural AAA</span>
+                    </div>
+                    <div>
+                        <span class="product_detail_name">Gem size:</span>
+                        <span class="product_detail_value">5.00 x 5.00mm, about 0.62 carats</span>
+                    </div>
+                    <div>
+                        <span class="product_detail_name">Number of stones:</span>
+                        <span class="product_detail_value">10</span>
+                    </div>
+                </div>
+            </div>
+            <div class="product_detail">
+                <span class="product_detail_name">Metal:</span>
+                <span class="product_detail_value">Platinum 18k</span>
+            </div>
+
+            <div class="jools_guarantee_wrapper cantarell_text">
+                <div class="jools_certificate center">
+                    <div class="jools_certificate_details">
+                        <div class="upper" style="color: #100F0F; padding-top: 5px; letter-spacing: 0;">
+                            Certificate of authenticity
+                        </div>
+                        <div style="padding: 6px; font-size: 11px;">
+                            Every piece of jewellery here is 100%
+                            AUTHENTIC and CERTIFIED by third-party
+                            international laboratories such as
+                            IGI & GIA.
+                        </div>
+                    </div>
+                </div>
+                <div class="jools_guarantee_details">
+                    <div class="relative" 
+                         style="background: white; width:170px; top:-13px; margin: auto; font-size: 18px;">
+                        Jools Guarantee
+                    </div>
+                    <div class="guarantee_details_text like_link">
+                        Free shipping
+                    </div>
+                    <div class="guarantee_details_text like_link">
+                        GIA certified
+                    </div>
+                    <div class="guarantee_details_text like_link">
+                        30 day returns
+                    </div>
+                    <div class="guarantee_details_text like_link">
+                        Lifetime exchange
+                    </div>
+                    <div class="guarantee_details_text like_link">
+                        Free returns
+                    </div>
+                    <div class="guarantee_details_text like_link">
+                        100% refund
+                    </div>
+                    <div class="relative goudy_text" style="background: white; top: 10px; margin: auto; width: 180px;">
+                        Shop with Confidence
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="right" style="margin-top: 28px; width: 307px;">
+            <div class="fb-comments" data-href="{{.Data.fbCommentsUrl}}" 
+                 data-numposts="2" data-colorscheme="light" data-width="300"></div>
+        </div>
+    </div>
+    <div class="get_inspired product_info_heading clear" style="margin-top: 20px;">
+        <span class="product_info_heading_text selected" style="color:#4D4D4D;">
+            Get Inspired
+        </span>
+    </div>
+    <div class="inspiring_designs cantarell_text">
+    </div>
+</div>
+<script type="text/javascript">
+var productObj = null;
+var afterInit = function() {
+    productObj = new Product(JSON.parse({{.Data.productInfo}}));
+    productObj.showInitialProduct();
+    $('.product_details_link').click(function() {
+        $(window).scrollTop( $('#detail_section').offset().top - 120 );
+    });
+    $('#promo_banner_wrapper').hide();
+    $('.size_selector_options').selectric();
+    $('.add_to_cart').click(function() {
+        cartObj.addToCart(productObj.getInfoForCart(), true);
+    });
+};
+</script>

@@ -1,0 +1,54 @@
+<div style="text-align: center; color: black;">
+    <div style="font-size: 40px; letter-spacing: 4px; margin-top: 10px;">
+        Welcome to Jools
+    </div>
+    <div>
+        <div style="font-size: 30px; padding: 15px 0;">
+            Help us remember you
+        </div>
+
+        <div class="error_message_wrapper" style="display:none; width: 300px;">
+            <div class="error_message">
+            </div>
+        </div>
+        <form id='complete_signup_form' action="{{.Config.BASE_URL}}/user/completeSignup" method="POST">
+            <div>
+                <input id="username" type="text" name="username" 
+                   placeholder="Enter your name here" 
+                   style="width: 290px;margin-bottom: 5px;">
+            </div>
+            <div>
+                <input id="password" type="password" name="password" 
+                   placeholder="Choose password" 
+                   style="width: 290px;margin-bottom: 5px;">
+            </div>
+            <div style="margin-bottom: 15px;">
+                <input id="verifyPassword" type="password" name="verifyPassword" 
+                       placeholder="Retype password" 
+                       style="width: 290px;margin-bottom: 5px;">
+            </div>
+            <input type="submit" value="I'm Ready" id="complete_signup_submit" class="light_pink_button">
+        </form>
+    </div>
+</div>
+<script type='text/javascript'>
+$('#complete_signup_submit').click(function(e) {
+    e.preventDefault();
+    var pwd = $('#password').val();
+    var verifyPwd = $('#verifyPassword').val();
+    var name = $('#username').val();
+    if(name == '' || pwd == '' || verifyPwd == '') {
+        $('.error_message').text('Please enter valid non-empty values');
+        $('.error_message_wrapper').show();
+        return;
+    }
+    if(pwd != verifyPwd) {
+        $('.error_message').text('The two passwords do not match');
+        $('.error_message_wrapper').show();
+        return;
+    }
+    //$('#complete_signup_form').submit();
+    userObj.completeSignup(name, pwd, verifyPwd);
+});
+utilObj.styleInputsAndButtons();
+</script>

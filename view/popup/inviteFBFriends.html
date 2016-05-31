@@ -1,0 +1,68 @@
+<div style="text-align: center; color: black;">
+    <div class="chunkfive_text" style="font-size: 50px; margin-top: 15px;">
+        Send gifts to friends
+    </div>
+    <div class="goudy_text" style="font-size: 24px; margin-bottom: 15px;">
+        Gift your friends <span class="lucida_text"><span class="WebRupee">Rs.</span>500</span>
+        & get <span class="lucida_text"><span class="WebRupee">Rs.</span>500</span> for each friend that joins!
+    </div>
+</div>
+<div style="background: rgba(139,210,206,0.3); font-size: 20px; margin: 0 15px; 
+     padding: 0 25px; padding-bottom: 50px;">
+    <div class="left" style='margin: 20px 0;'>
+        <span style="margin-right: 5px;">Select all</span>
+        <input id="fb_contacts_master_checkbox" type="checkbox" checked="checked">
+    </div>
+    <div class="relative right" style='margin-top: 15px;'>
+        <input id="search_fb_friends" type="text" placeholder="Enter a friend's name" maxlength="50" 
+               style='width: 550px;'>
+        <img src='{{.Config.STATIC_URL}}/images/icons/search_v1.png' alt=''
+             width='27' style='position: absolute;top: 3px; right: 8px;'>
+    </div>
+    <div id="fb_friends" class='clear'>  
+    </div>
+    <div class="relative" style="width: 757px; float: left; margin-right: 15px;margin-top: 15px;">
+        <div style="margin-bottom: 10px; border: 2px solid white; height: 24px;background: white;">
+            <div id="fb_invite_progress_bar_bg" style="width: 0%;"></div>
+            <div style="z-index: 1; position: relative; top: -18px; 
+                 text-align: center; color: #A7A7A7; font-size: 14px;">
+                Selected <span id="fb_contacts_selected_count">0</span>
+                out of
+                <span id="fb_total_friend_count"></span>
+                friends
+            </div>
+        </div>
+        <div style="position: absolute; top: -2px;right: -49px;">
+            <img src="{{.Config.STATIC_URL}}/images/icons/heart_large_v1.png" alt="">
+        </div>
+    </div>
+</div>
+<div style="text-align: center; margin-top: 10px;">
+    <button id="invite_fb_friends" class="light_pink_button">Invite Friends</button>
+</div>
+<script type="text/javascript">
+    var populateTimer = null;
+    function checkAndPopulateFriends() {
+        if(typeof FB == "undefined" || FB.getAccessToken() == null) {
+            populateTimer = setTimeout( function() {
+                checkAndPopulateFriends();
+            }, 500);
+            return;
+        }
+        facebookWrapperObj.populateFBFriends();
+    };
+    $('#invite_fb_friends').click(function() {
+        facebookWrapperObj.sendFBInvites();
+        utilObj.closePopup();
+    });
+    checkAndPopulateFriends();
+    utilObj.styleInputsAndButtons();
+    $('#search_fb_friends').keyup(function () { 
+        var enteredName = $(this).val();
+        if(enteredName == "") {
+            facebookWrapperObj.showFullFriendList();
+        } else {
+            facebookWrapperObj.showMatchedFriendList(enteredName);
+        }
+    });
+</script>

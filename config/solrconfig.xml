@@ -1,0 +1,9 @@
+<!-- Additional bits of config -->
+<lib dir="../../lib/" regex=".*\.jar" />
+<lib dir="../../../dist/" regex=".*\.jar" />
+
+  <requestHandler name="/dataimport" class="solr.DataImportHandler">
+  <lst name="defaults">
+  <str name="config">data-config.xml</str>
+  </lst>
+  </requestHandler>

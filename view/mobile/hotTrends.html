@@ -1,0 +1,18 @@
+<div style="margin-top: 30px; text-align: center;">
+    <h1 class="page_header">
+        Hottest Trends
+    </h1>
+    <h2 class="sub_header">
+        Discover & share the hottest jewellery trends
+    </h2>
+</div>
+<div id="allInspirations">
+</div>
+<img id="inspirationsLoading" src="{{.Config.STATIC_URL}}/images/icons/loading_v1.gif" 
+	alt="" height="30">
+<script type="text/javascript">
+window.onload = function() {
+    inspirationObj.showInspirationBoard();
+    inspirationObj.markFavorited();
+};
+</script>

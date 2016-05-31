@@ -1,0 +1,29 @@
+{
+	"became_member": {
+		"desc": "Became a member"
+	},
+	"favorite": {
+		"desc": "Favorited a design"
+	},
+	"follow": {
+		"desc": "Followed a user"
+	},
+	"liked_fb_page": {
+		"desc": "Liked Facebook page"
+	},
+	"pin": {
+		"desc": "Pinned a design"
+	},
+	"shared_site_on_fb": {
+		"desc": "Shared Jools on Facebook"
+	},
+	"took_tour": {
+		"desc": "Took the Jools tour"
+	},
+	"tweeted_site": {
+		"desc": "Tweeted about Jools"
+	},
+	"upload": {
+		"desc": "Uploaded a design"
+	}
+}

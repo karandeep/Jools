@@ -1,0 +1,63 @@
+Export data from design render sheet as csv
+Copy the csv in the scripts folder and rename as designs.csv
+
+//Failed Experiment
+:2,$s/^\([0-9]\+,"[A-Z0-9]\+","[a-zA-Z0-9 ]\+",[0-9]\+,[0-9\.]\+,[0-9\.]\+,[0-9\.\-]\+,[0-9\.]\+\),"\?\([0-9\. X;]\+\)"\?,"\?\([0-9\.;]\+\)"\?,\([0-9]\+,[0-9]\+\),"\?\([0-9\. X;]\+\)"\?,"\?\([0-9\.;]\+\)"\?,\([0-9]\+,[0-9]\+\),"\?\([0-9\.;]\+\)"\?,"\?\([0-9\.;]\+\)"\?\_$\n,,,,,,,[0-9\.]*/\1,"\2;","\3;",\4,"\5;","\6;",\7,"\8;","\9;"/g
+
+////////////////////////////////////////
+//START OF COMMANDS
+////////////////////////////////////////
+Cleanup lines at the bottom and top
+
+:1,$s/Diamond Ring/1/g
+:1,$s/Diamond Pendant/3/g
+
+:1,$s/Round/0/g
+:1,$s/Square/1/g
+:1,$s/Marquise/2/g
+:1,$s/Cushion/3/g
+:1,$s/Trillion/4/g
+:1,$s/Bagutte/5/g
+
+:1,$s/Prong/0/g
+:1,$s/Bezel/1/g
+:1,$s/Pave/2/g
+:1,$s/Channel/3/g
+
+:1,$s/,".*$//g
+:1,$s/,Metal price.*$//g
+:1s/dirName/id,dirName/
+:2,$s/^[A-Z]\+0*\([0-9]*\)/\1,"&"/g
+:2,$s/^\(.\{-}\),\(.\{-}\),\(.\{-}\),/\1,\2,"\3",/g
+:2,$s/""//g
+:2,$s/,NA,/,-1,/g
+:2,$s/,Na,/,-1,/g
+:2,$s/,na,/,-1,/g
+
+//////////////////////////////////////
+//Run commands until here
+//////////////////////////////////////
+:! ./formatMultiLineData.sh
+
+///////////////////////////////////////////////
+//Run these commands now that perl is done
+///////////////////////////////////////////////
+:1,$s/;\+/;/g
+:1,1s/^/INSERT IGNORE INTO Product\(/g
+:1,1s/$/\) VALUES/g
+:2,$s/^/\(/g
+:2,$s/$/\),/g
+GG
+$
+r;
+
+///////////////////////////////////////////////
+//Run these after the SQL Insert is done
+///////////////////////////////////////////////
+update Product set centerStone = 0 where centerStoneWt != 0 LIMIT 1000;
+update Product set centerStone = -1 where centerStoneWt = 0 LIMIT 1000;
+update Product set accentStoneOne = 0 where accentStoneOneWt != 0 LIMIT 1000;
+update Product set accentStoneOne = -1 where accentStoneOneWt = 0 LIMIT 1000;
+update Product set accentStoneTwo = 0 where accentStoneTwoWt != 0 LIMIT 1000;
+update Product set accentStoneTwo = -1 where accentStoneTwoWt = 0 LIMIT 1000;
+

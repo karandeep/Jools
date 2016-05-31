@@ -1,0 +1,134 @@
+<div class="goudy_heading center">
+    Share beautiful jewellery!
+</div>
+<div style="padding: 10px; font-size: 18px;">
+	Seen a stunning jewellery design lately? Go ahead and share it with the Jools community!
+    <div style="font-size: 16px; padding-top: 5px;">
+        If the design gets rated high, we'll make it available for sale, and you'll get a share in the sales!
+    </div>
+</div>
+<div id="uploadContainer">
+    <div id="filelist"></div>
+    <div id="uploadHintText" style='text-align: center; font-size: 25px;'>
+        <div id="noImagesYet" style="margin: 20px 0;">
+            You haven't selected any images yet.
+        </div>
+        <div style="margin-top: 20px;">
+            Click the 'Choose Images' button below to select images.
+        </div>
+    </div>
+</div>
+<div id="imageUploadButtons">
+    <button id="pickfiles" class="light_pink_button">1. Choose Images</button> 
+    <button id="uploadfiles" class="light_pink_button">2. Upload</button>
+</div>
+<script src="{{.Config.STATIC_URL}}/js/libs/plupload-2.0.0/js/plupload.full.min.js"></script>
+<script type="text/javascript">
+var fileObjects = new Array();
+var uploader;
+var getHashUrl = "{{.Config.BASE_URL}}/user/generateAndFetchHash";
+var uploadUrl = {{.Config.UPLOAD_URL}};
+
+function setupFileUploader() {
+    uploader = new plupload.Uploader({
+        runtimes: 'html5,flash,silverlight,html4',
+        browse_button: 'pickfiles',
+        container: 'uploadContainer',
+        url: uploadUrl,
+        flash_swf_url: '../js/Moxie.swf',
+        silverlight_xap_url: '../js/Moxie.xap',
+        drop_element: 'uploadContainer',
+        unique_names: false,
+        filters: {
+            max_file_size: '20mb',
+            mime_types: [
+                {title: "Image files", extensions: "jpg,gif,png"}
+            ]
+        },
+        resize: {
+            width: 600,
+            height: 600,
+            quality: 100,
+            preserve_headers: false,
+            crop: false
+        },
+        init: {
+            PostInit: function() {
+                $('#pickfiles').click(function() {
+					trackObj.count("action", "upload_pop", "upload", "choose");
+                });
+                $('#uploadfiles').click(function() {
+					trackObj.count("action", "upload_pop", "upload", "click");
+                    handleInspirationUploads();
+                });
+            },
+            FilesAdded: function(up, files) {
+                $('#noImagesYet').hide();
+                plupload.each(files, function(file) {
+                    document.getElementById('filelist').innerHTML += 
+                      '<div class="addedFile" id="' + file.id + '">' + 
+                      file.name + ' (' + plupload.formatSize(file.size) + 
+                      ') <b></b> <div class="fileRemoveButton" onclick="removeThisFile(\'' 
+                      + file.id + '\');">X</div></div>';
+                    var fileId = file.id;
+                    fileObjects[fileId] = file;
+                });
+            },
+            UploadProgress: function(up, file) {
+                if(file.percent == 100) {
+                    $('#' + file.id).addClass('fileUploaded');
+					trackObj.count("action", "upload_pop", "upload", "success");
+                }
+                document.getElementById(file.id).getElementsByTagName('b')[0].innerHTML = '<span>' + file.percent + "%</span>";
+            },
+            Error: function(up, err) {
+				trackObj.count("action", "upload_pop", "upload", "fail");
+                 console.log("\nError #" + err.code + ": " + err.message);
+            }
+        }
+    });
+
+    uploader.init();
+}
+
+function removeThisFile(fileId) {
+    $('#' + fileId).fadeOut();
+    uploader.removeFile(fileObjects[fileId]);
+}
+
+function startInspirationUploads(result) {
+    if(!userObj.isLoggedIn()) {
+        alert("You are not logged in or your session has timed out. SignIn to continue");
+    }
+    if (result.Success == false) {
+		trackObj.count("action", "upload_pop", "upload", "fail");
+        console.log(result);
+		return;
+    }
+    if (uploader.settings.multipart_params === undefined) {
+        uploader.settings.multipart_params = {
+            'time': result.Data.time,
+            'userId': result.Data.userId,
+            'hash': result.Data.hash
+        };
+    }
+    uploader.start();
+    return false;
+}
+
+function handleInspirationUploads() {
+    if (uploader.settings.multipart_params === undefined) {
+        $.ajax({
+            url: getHashUrl,
+            data: {},
+            success: startInspirationUploads,
+            dataType: 'json'
+        });
+    } else {
+		uploader.start();
+    }
+}
+
+utilObj.styleInputsAndButtons();
+setupFileUploader();
+</script>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>{{.PageInfo.Title}}</title>
+        <meta name="description" content="{{.PageInfo.Description}}">
+        <meta name="keywords" content="{{.PageInfo.Keywords}}">
+        <meta name='author' content='Jools'>
+        <link rel="canonical" href="{{.PageInfo.Canonical}}">
+        <meta property="fb:app_id" content="{{.Config.FB_APP_ID}}">
+        <meta property="og:url" content="{{.PageInfo.OG_URL}}">
+        <meta property="og:title" content="{{.PageInfo.OG_TITLE}}">
+        <meta property="og:type" content="{{.PageInfo.OG_TYPE}}">
+        <meta property="og:description" content="{{.PageInfo.OG_DESC}}">
+        <meta property="og:site_name" content="Jools.in">
+        <meta property="og:image" content="{{.PageInfo.OG_IMAGE}}">
+        <meta property="fb:page_id" content="{{.Config.FB_PAGE_ID}}">
+        <!--meta property="og:image:type" content="image/jpg">
+        <meta property="og:image:width" content="400">
+        <meta property="og:image:height" content="400"-->
+        <link href='https://fonts.googleapis.com/css?family=Goudy+Bookletter+1911|Cantarell:400' rel='stylesheet' type='text/css'>
+        <link href="{{.Config.STATIC_URL}}/js/libs/jqueryui/css/ui-lightness/jquery-ui-1.10.3.custom.min.css" rel="stylesheet">
+        {{.InternalCSS}}
+    </head>
+    <body>
+        <div id="fb-root"></div>
+        <div class="top_message"></div>
+        {{.HeaderHTML}}
+        <div id="page_content">
+            {{.ContentHTML}}
+        </div>
+        <div id="popup">
+        </div>
+        <div id="popup_overlay"></div>
+        <div id="alert_box"></div>
+        {{.FooterHTML}}
+        {{.FooterJS}}
+        {{.InternalJS}}
+    </body>
+</html>

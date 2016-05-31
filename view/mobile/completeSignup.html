@@ -1,0 +1,49 @@
+<div style="text-align: center; color: black;">
+    <h1 class="page_header">
+        Help us remember you
+    </h1>
+    <div class="error_message_wrapper" style="display:none; width: 220px;">
+        <div class="error_message">
+        </div>
+    </div>
+    <form id='complete_signup_form' action="{{.Config.BASE_URL}}/user/completeSignup" method="POST">
+        <div>
+            <input id="username" type="text" name="username" 
+                   placeholder="Enter your name here" 
+                   style="width: 220px;margin-bottom: 5px;">
+        </div>
+        <div>
+            <input id="password" type="password" name="password" 
+                   placeholder="Choose password" 
+                   style="width: 220px;margin-bottom: 5px;">
+        </div>
+        <div style="margin-bottom: 20px;">
+            <input id="verifyPassword" type="password" name="verifyPassword" 
+                   placeholder="Retype password" 
+                   style="width: 220px;">
+        </div>
+        <input type="submit" value="I'm Ready" id="complete_signup_submit" 
+               class="light_pink_button" style="width: 220px;">
+    </form>
+</div>
+<script type='text/javascript'>
+    window.onload = function() {
+        $('#complete_signup_submit').click(function(e) {
+            e.preventDefault();
+            var pwd = $('#password').val();
+            var verifyPwd = $('#verifyPassword').val();
+            var name = $('#username').val();
+            if (name == '' || pwd == '' || verifyPwd == '') {
+                $('.error_message').text('Please enter valid non-empty values');
+                $('.error_message_wrapper').show();
+                return;
+            }
+            if (pwd != verifyPwd) {
+                $('.error_message').text('The two passwords do not match');
+                $('.error_message_wrapper').show();
+                return;
+            }
+            userObj.completeSignup(name, pwd, verifyPwd);
+        });
+    }
+</script>

@@ -1,0 +1,13 @@
+<div id="allInspirations">
+</div>
+<script type="text/javascript">
+window.onload = function() {
+    inspirationObj.showInspirationApprovalBoard();
+    $('.approveImage').click(function() {
+       inspirationObj.markApproved( $(this) ); 
+    });
+    $('.rejectImage').click(function() {
+       inspirationObj.markRejected( $(this) ); 
+    });
+};
+</script>
